@@ -1,0 +1,40 @@
+.form{
+    width: 50vw;    
+}
+
+.form .userType{
+    display: flex;
+    justify-content: space-around;
+}
+
+.form .userType div{
+    display: flex;
+}
+
+.form .userType div input:hover{
+    cursor: pointer;
+}
+
+.form .userType div p:hover{
+    cursor: pointer;
+}
+
+.form .mainForm{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+
+.form .mainForm div{
+    margin: 50px 20px;
+}
+
+.form .mainForm button{
+    transform: translateX(400%);
+    width: 10%;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    padding: 7px 15px;
+}
