@@ -12,5 +12,5 @@ function changePage () {
 }
 
 function goToHome() {
-    window.location = "http://localhost/Group%20Project/"
+    window.location = "http://localhost/Y1S2-Group-Project/";
 }
