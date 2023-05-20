@@ -3,10 +3,13 @@ let logInStatus = document.getElementById("logInStatus").addEventListener("click
 let supportLogo = document.getElementById("supportLogo").addEventListener("click", goToHome);
 
 
+
+
 function changePage () {
     let currentURL = window.location.href;
-    if (currentURL.length == 33){
-        currentURL += "login.php";
+
+    if (currentURL.length == 36){
+        currentURL += "/login.php";
     }
     window.location = currentURL;
 }
