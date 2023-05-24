@@ -1,6 +1,7 @@
 <?php
 include "navBar.php";
-?>
+include "DatabaseConnect.php"
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +62,31 @@ if (isset($_POST["Submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
+    if ($type == "Registered") {
+        $sql = "SELECT StudentEmail , StudentPassword FROM studentdetails WHERE StudentEmail = '$email' AND StudentPassword = '$password'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows == 1) {
+            echo "YESSS";
+        } else {
+            echo "NOOO";
+        }
+    } else if ($type == "Manager") {
+        $sql = "SELECT 'ManagerEmail','ManagerPassword' FROM managerdetails WHERE ManagerEmail='$email' AND ManagerPassword='$password';";
+        $result = $conn->query($sql);
+
+        if ($result){
+            if ($result->num_rows == 1) {
+                echo "YESSS";
+            } else {
+                echo "NOOO";
+            }
+        } else {
+            echo "Error in ".$query."<br>".$conn->error;
+        }
+    }
 }
+
 
 
 

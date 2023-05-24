@@ -9,7 +9,7 @@ function changePage () {
     let currentURL = window.location.href;
 
     if (currentURL.length == 36){
-        currentURL += "/login.php";
+        currentURL += "login.php";
     }
     window.location = currentURL;
 }
