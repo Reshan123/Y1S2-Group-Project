@@ -17,3 +17,6 @@ function changePage () {
 function goToHome() {
     window.location = "http://localhost/Y1S2-Group-Project/";
 }
+
+
+

@@ -1,0 +1,26 @@
+a{
+    text-decoration: none;
+    color: rgb(15, 176, 216);
+}
+
+body table {
+    margin: auto;
+    margin-top: 50px;
+}
+
+body table tbody tr{
+    display: flex;
+    gap: 50px;
+}
+
+body table tbody tr td{
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: 20px 40px 30px 30px 20px;    
+    grid-template-rows: 10px 25px 25px;
+}
+
+body table tbody tr:nth-child(1){
+    font-weight: 900;
+    font-size: 1.3em;
+}

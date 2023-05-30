@@ -1,6 +1,7 @@
 <?php
+
 require "DatabaseConnect.php"
-    ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,7 @@ require "DatabaseConnect.php"
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navigationBar.css">
+
 </head>
 
 <body>
@@ -21,28 +23,25 @@ require "DatabaseConnect.php"
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
             </div>
-            <p class="logInStatus" id="logInStatus">Not Logged In</p>
+            <p id="logInStatus">Not Logged In</p>
         </div>
     </nav>
 
-    <script>
-        let supportLogo = document.getElementById("supportLogo").addEventListener("click" , Gotohome);
-        function Gotohome() {
-            window.location = "http://localhost/Y1S2-Group-Project/";
-        }
-    </script>
+    <script src="js/navBar.js"></script>
+
+
 
     <center style="padding:100px 0px;">
-        <form action="login.php" method="post" class="form">
+        <form action="adminlogin.php" method="post" class="form">
 
             <div class="userType">
                 <div>
-                    <input type="radio" name="Type" id="Unregistered" value="Unregistered">
-                    <p id="UnregisteredText">Unregistered</p>
+                    <input type="radio" name="Type" id="Staff" value="Staff">
+                    <p id="StaffText">Staff</p>
                 </div>
                 <div>
-                    <input type="radio" name="Type" id="Registered" value="Registered">
-                    <p id="RegisteredText">Registered student</p>
+                    <input type="radio" name="Type" id="Manager" value="Manager">
+                    <p id="ManagerText">Manager</p>
                 </div>
             </div>
 
@@ -58,7 +57,7 @@ require "DatabaseConnect.php"
         </form>
     </center>
 
-    <script src="js/login.js"></script>
+    <script src="js/adminlogin.js"></script>
 </body>
 
 </html>
@@ -67,24 +66,28 @@ require "DatabaseConnect.php"
 $email = "";
 $password = "";
 $type = "";
-if (isset($_POST["Submit"])) {
+if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
-    if ($type == "Unregistered" && $email == "" && $password == "") {
-        header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
-    } else if ($type == "Registered") {
-        $sql = "SELECT StudentEmail , StudentPassword FROM studentdetails WHERE StudentEmail = '$email' AND StudentPassword = '$password'";
+    if ($type == "Manager") {
+        $sql = "SELECT * FROM manager WHERE Manager_email='$email' AND Manager_password='$password';";
         $result = $conn->query($sql);
 
-        if ($result->num_rows == 1) {
-            echo "Registered";
-        } else {
-            echo "NOOO Registered";
+        while ($row = $result->fetch_assoc()) {
+            header("location:http://localhost/Y1S2-Group-Project/manager.php?managerid=".$row["Manager_ID"]);
         }
-    }
-}
+    } else if ($type == "Staff") {
+        $sql = "SELECT * FROM responder WHERE Responder_email='$email' AND Responder_password='$password';";
+        $result = $conn->query($sql);
 
+        while ($row = $result->fetch_assoc()) {
+            header("location:http://localhost/Y1S2-Group-Project/responder.php?responderid=".$row["Responder_ID"]);
+        }
+    } else {
+        echo "<script> alert('Please enter a user type!!'); </script>";
+    }
+} 
 
 
 

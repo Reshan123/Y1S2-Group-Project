@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(216, 248, 248);
+}
+
+body nav div{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+body nav .rightAlign {
+    margin-right: 50px;
+}
+
+body nav .leftAlign img{
+    width: 200px;
+    height: 100px;
+}
+
+body nav .leftAlign p{
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body nav .rightAlign .profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+body nav .rightAlign .profileImage img {
+    width: 100px;
+    height: auto;
+}
+
+body nav .rightAlign .logInStatus {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+body nav .rightAlign .raiseTicket{
+    border: 2px solid rgb(183, 181, 181);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+body nav .rightAlign .profileImage .logout{
+    display: none;
+    background-color: beige;
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: -20px;
+    cursor: pointer;
+}
+
+body nav .rightAlign .profileImage:hover .logout{
+    display: block;
+}

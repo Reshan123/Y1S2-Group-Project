@@ -1,5 +1,12 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    margin-bottom: 200px;
+}
 
 body .common_q{
+    display: block;
     background-color: rgb(220, 220, 220);
     border-radius: 50px;
     margin: auto;
@@ -27,4 +34,25 @@ body .common_q .body{
 body .common_q .addedBy{
     text-align: right;
     width: 40%;
+}
+
+body .raiseTForm {
+    display: none;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+body .raiseTForm fieldset {
+    padding: 30px 40px;
+}
+
+body .raiseTForm fieldset > * {
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+
+body .raiseTForm fieldset button{
+    padding: 10px 15px;
 }

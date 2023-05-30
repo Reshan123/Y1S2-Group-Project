@@ -1,5 +1,6 @@
 
 body .common_q{
+    display: none;
     background-color: rgb(220, 220, 220);
     border-radius: 50px;
     margin: auto;
