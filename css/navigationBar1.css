@@ -48,12 +48,6 @@ body nav .rightAlign .logInStatus {
     font-weight: 500;
 }
 
-body nav .rightAlign .raiseTicket{
-    border: 2px solid rgb(183, 181, 181);
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
 body nav .rightAlign .profileImage .logout{
     display: none;
     background-color: beige;
@@ -66,4 +60,11 @@ body nav .rightAlign .profileImage .logout{
 
 body nav .rightAlign .profileImage:hover .logout{
     display: block;
+}
+
+.button{
+    border: 2px solid rgb(183, 181, 181);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 15px;
 }

@@ -27,8 +27,6 @@ require "DatabaseConnect.php"
         </div>
     </nav>
 
-    <script src="js/navBar.js"></script>
-
 
 
     <center style="padding:100px 0px;">
