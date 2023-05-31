@@ -5,8 +5,8 @@ require "DatabaseConnect.php";
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/responder1.css" />
-    <link rel="stylesheet" href="css/navigationBar1.css">
+    <link rel="stylesheet" href="css/responder.css" />
+    <link rel="stylesheet" href="css/navigationBar.css">
     <title>Document</title>
 </head>
 

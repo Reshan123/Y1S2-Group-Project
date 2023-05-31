@@ -1,0 +1,101 @@
+
+body .common_q{
+    display: none;
+    background-color: rgb(220, 220, 220);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+body .common_q .title{
+    margin: 20px 40px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .common_q .body{
+    text-align: justify;
+    width: 30%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .common_q .addedBy{
+    text-align: right;
+    width: 40%;
+}
+
+
+
+
+
+body .registered_tickets{
+    background-color: rgb(220, 220, 220);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+body .registered_tickets .title{
+    margin: 20px 40px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .registered_tickets .body{
+    text-align: justify;
+    width: 30%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .registered_tickets .addedBy{
+    text-align: right;
+    width: 40%;
+}
+
+
+
+
+
+
+body .unreg_tickets{
+    display: none;
+    background-color: rgb(220, 220, 220);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+body .unreg_tickets .title{
+    margin: 20px 40px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .unreg_tickets .body{
+    text-align: justify;
+    width: 30%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .unreg_tickets .addedBy{
+    text-align: right;
+    width: 40%;
+}

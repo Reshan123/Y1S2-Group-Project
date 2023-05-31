@@ -25,13 +25,6 @@ require "DatabaseConnect.php"
         </div>
     </nav>
 
-    <script>
-        let supportLogo = document.getElementById("supportLogo").addEventListener("click" , Gotohome);
-        function Gotohome() {
-            window.location = "http://localhost/Y1S2-Group-Project/";
-        }
-    </script>
-
     <center style="padding:100px 0px;">
         <form action="login.php" method="post" class="form">
 

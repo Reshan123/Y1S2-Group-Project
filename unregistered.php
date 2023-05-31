@@ -20,7 +20,7 @@ require "DatabaseConnect.php";
 
         </div>
         <div class="rightAlign">
-            <p class="raiseTicket" onclick="showRaiseT()">Raise Ticket</p>
+            <p class="button" onclick="showRaiseT()">Raise Ticket</p>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
                 <button class="logout" onclick="logout()">Logout</button>
