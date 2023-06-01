@@ -1,7 +1,3 @@
-<?php
-require "DatabaseConnect.php"
-    ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -12,6 +8,7 @@ require "DatabaseConnect.php"
 </head>
 
 <body>
+    <!-- Navigation bar -->
     <nav>
         <div class="leftAlign" id="supportLogo">
             <img src="assets/logo.png" alt="LOGO" />
@@ -26,8 +23,10 @@ require "DatabaseConnect.php"
     </nav>
 
     <center style="padding:100px 0px;">
+        <!-- Login form -->
         <form action="login.php" method="post" class="form">
 
+            <!-- User type selection -->
             <div class="userType">
                 <div>
                     <input type="radio" name="Type" id="Unregistered" value="Unregistered">
@@ -39,6 +38,7 @@ require "DatabaseConnect.php"
                 </div>
             </div>
 
+            <!-- Email and password input fields -->
             <div class="mainForm">
                 <div>
                     Email : <input type="text" name="email">
@@ -51,35 +51,39 @@ require "DatabaseConnect.php"
         </form>
     </center>
 
+    <!-- Login script -->
     <script src="js/login.js"></script>
 </body>
 
 </html>
 
 <?php
+// Initialize variables to store user input
 $email = "";
 $password = "";
 $type = "";
+
+// Check if the login form is submitted
 if (isset($_POST["Submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
+
+    // Check if the user is unregistered
     if ($type == "Unregistered" && $email == "" && $password == "") {
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
     } else if ($type == "Registered") {
-        $sql = "SELECT StudentEmail , StudentPassword FROM studentdetails WHERE StudentEmail = '$email' AND StudentPassword = '$password'";
+        // Check if the user is registered by querying the database
+        $sql = "SELECT * FROM registered_user WHERE Reg_email = '$email' AND Reg_password = '$password'";
         $result = $conn->query($sql);
 
+        // If the user is registered, display a message
         if ($result->num_rows == 1) {
             echo "Registered";
         } else {
+            // If the user is not registered, display a message
             echo "NOOO Registered";
         }
     }
 }
-
-
-
-
-
 ?>

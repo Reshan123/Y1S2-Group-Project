@@ -1,7 +1,7 @@
 <?php
 
 require "DatabaseConnect.php"
-?>
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -73,19 +73,19 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
         $result = $conn->query($sql);
 
         while ($row = $result->fetch_assoc()) {
-            header("location:http://localhost/Y1S2-Group-Project/manager.php?managerid=".$row["Manager_ID"]);
+            header("location:http://localhost/Y1S2-Group-Project/manager.php?managerid=" . $row["Manager_ID"]);
         }
     } else if ($type == "Staff") {
-        $sql = "SELECT * FROM responder WHERE Responder_email='$email' AND Responder_password='$password';";
+        $sql = "SELECT * FROM responder WHERE Res_email='$email' AND Res_password='$password';";
         $result = $conn->query($sql);
 
         while ($row = $result->fetch_assoc()) {
-            header("location:http://localhost/Y1S2-Group-Project/responder.php?responderid=".$row["Responder_ID"]);
+            header("location:http://localhost/Y1S2-Group-Project/responder.php?responderid=" . $row["Res_ID"]);
         }
     } else {
         echo "<script> alert('Please enter a user type!!'); </script>";
     }
-} 
+}
 
 
 
