@@ -68,6 +68,7 @@ body nav .rightAlign .profileImage:hover .logout{
     padding: 5px 10px;
     margin-right: 15px;
     box-shadow: 2px 2px;
+    cursor: pointer;
 }
 
 .button:active{

@@ -85,18 +85,29 @@ require "DatabaseConnect.php";
     </div>
     <div class="reply" id="reply">
         <?php
-            if (isset($_GET["ID"])) {
-                $ID = $_GET["ID"];
-                $resultGetSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =".$ID);
+        if (isset($_GET["ID"])) {
+            $ID = $_GET["ID"];
+            $resultGetSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =" . $ID);
 
-                while ($row = $resultGetSolution->fetch_assoc()){
-                    echo '<script>alert("Alredy answered")</script>';
-                }
+            while ($row = $resultGetSolution->fetch_assoc()) {
+                echo '<script>alert("Alredy answered")</script>';
+            }
 
-                if ($resultGetSolution->num_rows == 0){
-                    echo "Answer has not been submitted";
+            if ($resultGetSolution->num_rows == 0) {
+                $resultTicket = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $ID);
+                while ($row = $resultTicket->fetch_assoc()) {
+                    echo "<h1 class=" . "title" . ">" . $row["RegT_title"] . "</h1>";
+                    $resultTicketBody = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $ID);
+                    while ($row = $resultTicketBody->fetch_assoc()) {
+                        echo "<div class=" . "body" . ">" . $row["RegT_body"] . "</div>";
+                    }
+                    echo "<form action=" . "responder.php" . " method=" . "post" . ">
+                            <div class="."solution".">Solution : <textarea name="."solution"." cols="."100"." rows="."10"." style="."padding:15px;"."></textarea></div>
+                            <button type="."submit"." name="."solutionsubmit"." class="."button".">Submit</button>
+                        </form>";
                 }
             }
+        }
         ?>
     </div>
     <?php

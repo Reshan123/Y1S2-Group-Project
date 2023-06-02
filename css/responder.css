@@ -139,3 +139,48 @@ body .unreg_tickets .ticket .addedBy{
 body .reply {
     display: none;
 }
+
+
+body .reply{
+    display:  none;
+    background-color: rgb(220, 220, 220);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+
+body .reply .title{
+    margin: 20px 40px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .reply .body{
+    text-align: justify;
+    width: 30%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .reply form .solution{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 10px;
+}
+
+
+body .reply form .solution textarea{
+    background-color: rgb(216, 248, 248);
+}
+
+body .reply form button{
+    margin: 20px 100px;
+}
