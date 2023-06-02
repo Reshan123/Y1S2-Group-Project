@@ -95,7 +95,7 @@ require "DatabaseConnect.php";
                     alert("Alredy answered");
                     document.getElementById("reply").style.display = "block";
                     document.getElementById("registered_tickets").style.display = "block";                
-                </script>
+                </script> 
                 <?php
 
                 // echo '<script>';
