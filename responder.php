@@ -90,7 +90,19 @@ require "DatabaseConnect.php";
             $resultGetSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =" . $ID);
 
             while ($row = $resultGetSolution->fetch_assoc()) {
-                echo '<script>alert("Alredy answered")</script>';
+                ?>
+                <script>
+                    alert("Alredy answered");
+                    document.getElementById("reply").style.display = "block";
+                    document.getElementById("registered_tickets").style.display = "block";                
+                </script>
+                <?php
+
+                // echo '<script>';
+                // echo 'alert("Alredy answered");';
+                // echo 'document.getElementById("reply").style.display = "block";';
+                // echo 'document.getElementById("registered_tickets").style.display = "block";'; 
+                // echo '</script>';
             }
 
             if ($resultGetSolution->num_rows == 0) {
@@ -102,8 +114,8 @@ require "DatabaseConnect.php";
                         echo "<div class=" . "body" . ">" . $row["RegT_body"] . "</div>";
                     }
                     echo "<form action=" . "responder.php" . " method=" . "post" . ">
-                            <div class="."solution".">Solution : <textarea name="."solution"." cols="."100"." rows="."10"." style="."padding:15px;"."></textarea></div>
-                            <button type="."submit"." name="."solutionsubmit"." class="."button".">Submit</button>
+                            <div class=" . "solution" . ">Solution : <textarea name=" . "solution" . " cols=" . "100" . " rows=" . "10" . " style=" . "padding:15px;" . "></textarea></div>
+                            <button type=" . "submit" . " name=" . "solutionsubmit" . " class=" . "button" . ">Submit</button>
                         </form>";
                 }
             }
