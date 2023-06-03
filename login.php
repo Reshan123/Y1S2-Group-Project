@@ -1,3 +1,7 @@
+<?php
+require "DatabaseConnect.php";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -77,12 +81,12 @@ if (isset($_POST["Submit"])) {
         $sql = "SELECT * FROM registered_user WHERE Reg_email = '$email' AND Reg_password = '$password'";
         $result = $conn->query($sql);
 
-        // If the user is registered, display a message
+        // If the user is registered
         if ($result->num_rows == 1) {
-            echo "Registered";
-        } else {
-            // If the user is not registered, display a message
-            echo "NOOO Registered";
+            while($row = $result->fetch_assoc()){
+                header('location:http://localhost/Y1S2-Group-Project/registered.php?regid='.$row["Reg_ID"]);
+            }
+            
         }
     }
 }

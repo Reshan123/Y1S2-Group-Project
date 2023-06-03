@@ -72,7 +72,7 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
         $resultRegT = $conn->query($sqlRegT);
         while ($row = $resultRegT->fetch_assoc()) {
             // Display each unregistered ticket.
-            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["UnregT_title"] . "</div><br/><div class=" . "body" . ">" . $row["UnregT_body"] . "</div><br/><br/><form action = "."mailto:".$row["UnregT_pemail"]."><button type="."submit"." class=" . "button".")" . ">Reply</button></form>";
+            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["UnregT_title"] . "</div><br/><div class=" . "body" . ">" . $row["UnregT_body"] . "</div><br/><br/><form action = mailto:".$row["UnregT_pemail"]."><button type="."submit"." class=" . "button".")" . ">Reply</button></form>";
             echo "<div class=" . "addedBy" . ">Added by :- " . $row["UnregT_pemail"] . "</div></div>";
         }
         ?>

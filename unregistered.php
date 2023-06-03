@@ -16,7 +16,7 @@ require "DatabaseConnect.php";
     <nav>
         <div class="leftAlign" onclick="showCommonQ()">
             <img src="assets/logo.png" alt="LOGO" />
-            <p>Support Page</p>
+            <p>Support Page > Unregistered</p>
 
         </div>
         <div class="rightAlign">
@@ -69,7 +69,16 @@ if (isset($_POST["Submit"])) {
     $t_pemail = $_POST["T_pemail"];
     $t_body = $_POST["T_body"];
 
-    $sqlInsertUnregT = "INSERT INTO unreg_tickets (UnregT_title, UnregT_body, UnregP_email) VALUES ('$t_title','$t_body','$t_pemail')";
+    $resultUnregTID = $conn->query("SELECT UnregT_ID FROM unreg_tickets");
+    $UnregTID = 0;
+    while ($row = $resultUnregTID->fetch_assoc()) {
+        if ($UnregTID < $row["UnregT_ID"]) {
+            $UnregTID = $row["UnregT_ID"];
+        }
+    }
+    $UnregTID++;
+
+    $sqlInsertUnregT = "INSERT INTO unreg_tickets (UnregT_ID,UnregT_title, UnregT_body, UnregT_pemail) VALUES ($UnregTID,'$t_title','$t_body','$t_pemail')";
 
     if ($conn->query($sqlInsertUnregT) == TRUE) {
         echo "<script> alert('Your ticket has been raised. Please await for reply through $t_pemail.' ) </script>";
