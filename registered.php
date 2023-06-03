@@ -14,7 +14,7 @@ require "DatabaseConnect.php";
 
 <body>
     <nav>
-        <div class="leftAlign" onclick="showCommonQ()">
+        <div class="leftAlign" onclick="closeAllReply()">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page > Registered</p>
 
@@ -40,7 +40,27 @@ require "DatabaseConnect.php";
     </nav>
 
     <div class="askedQ">
-
+        
+        <?php
+            $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = ".$RegID);
+            if ($resultUserTickets->num_rows > 0){
+                echo "<h1>Raised Questions</h1>";
+                while($rowTicket = $resultUserTickets->fetch_assoc()){
+                    $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " .$rowTicket["RegT_ID"]);
+                    if($resultTicketReply->num_rows > 0){
+                        while ($rowReply = $resultTicketReply->fetch_assoc()){
+                            
+                            echo "<div class=ticket><div class = title>".$rowTicket["RegT_title"]."</div><br>";
+                            echo "<div class = body>".$rowTicket["RegT_body"]."</div><br>";
+                            echo "<button class=button onclick=showSolution(".$rowReply["S_ID"].")>Show Reply</button>";
+                            echo "<reply class=reply id=".$rowReply["S_ID"].">".$rowReply["S_Body"]."</reply></div>";
+                        }
+                    }
+                } 
+            } else {
+                echo "<h1>You Have Not Raised Any Tickets</h1>";
+            }
+        ?>
     </div>
 
 

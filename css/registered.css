@@ -1,0 +1,50 @@
+body .askedQ{
+    background-color: rgb(220, 220, 220);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+body .askedQ h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
+}
+
+body .askedQ .ticket{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+body .askedQ .ticket .title{
+    margin: 20px 40px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .askedQ .ticket .body{
+    text-align: justify;
+    width: 90%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .askedQ .ticket .reply{
+    display: none;
+    width: 50%;
+    align-self: center;
+    text-align: justify;
+    margin: 20px 0px;
+}
+
+body .askedQ .ticket .button{
+    width: 40%;
+    align-self: flex-end;
+}
