@@ -27,12 +27,12 @@ require "DatabaseConnect.php";
             </div>
             <p id="logInStatus">
                 <?php
-                    // Get the User ID from the URL.
-                    $RegID = $_GET["regid"];
-                    // Retrieve the username of the User from the database.
-                    $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
-                    while ($row = $resultUsersName->fetch_assoc()) {
-                        echo $row["Reg_username"];
+                // Get the User ID from the URL.
+                $RegID = $_GET["regid"];
+                // Retrieve the username of the User from the database.
+                $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
+                while ($row = $resultUsersName->fetch_assoc()) {
+                    echo $row["Reg_username"];
                 }
                 ?>
             </p>
@@ -40,26 +40,31 @@ require "DatabaseConnect.php";
     </nav>
 
     <div class="askedQ">
-        
+
         <?php
-            $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = ".$RegID);
-            if ($resultUserTickets->num_rows > 0){
-                echo "<h1>Raised Questions</h1>";
-                while($rowTicket = $resultUserTickets->fetch_assoc()){
-                    $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " .$rowTicket["RegT_ID"]);
-                    if($resultTicketReply->num_rows > 0){
-                        while ($rowReply = $resultTicketReply->fetch_assoc()){
-                            
-                            echo "<div class=ticket><div class = title>".$rowTicket["RegT_title"]."</div><br>";
-                            echo "<div class = body>".$rowTicket["RegT_body"]."</div><br>";
-                            echo "<button class=button onclick=showSolution(".$rowReply["S_ID"].")>Show Reply</button>";
-                            echo "<reply class=reply id=".$rowReply["S_ID"].">".$rowReply["S_Body"]."</reply></div>";
-                        }
+        $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
+        if ($resultUserTickets->num_rows > 0) {
+            echo "<h1>Raised Questions</h1>";
+            while ($rowTicket = $resultUserTickets->fetch_assoc()) {
+                $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " . $rowTicket["RegT_ID"]);
+                if ($resultTicketReply->num_rows > 0) {
+                    while ($rowReply = $resultTicketReply->fetch_assoc()) {
+
+                        echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
+                        echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
+                        echo "<button class=button onclick=showSolution(" . $rowReply["S_ID"] . ")>Show Reply</button>";
+                        echo "<reply class=reply id=" . $rowReply["S_ID"] . ">" . $rowReply["S_Body"] . "</reply></div>";
                     }
-                } 
-            } else {
-                echo "<h1>You Have Not Raised Any Tickets</h1>";
+                } else {
+                    echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
+                    echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
+                    echo "<button class=button>Not Replied Yet</button>";
+                    echo "</div>";
+                }
             }
+        } else {
+            echo "<h1>You Have Not Raised Any Tickets</h1>";
+        }
         ?>
     </div>
 

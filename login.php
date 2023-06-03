@@ -26,33 +26,38 @@ require "DatabaseConnect.php";
         </div>
     </nav>
 
-    <center style="padding:100px 0px;">
-        <!-- Login form -->
-        <form action="login.php" method="post" class="form">
+    <center style="padding:50px 0px;">
+        <div class="form">
+            <fieldset>
+                <legend>Log In</legend>
+                <!-- Login form -->
+                <form action="login.php" method="post">
 
-            <!-- User type selection -->
-            <div class="userType">
-                <div>
-                    <input type="radio" name="Type" id="Unregistered" value="Unregistered">
-                    <p id="UnregisteredText">Unregistered</p>
-                </div>
-                <div>
-                    <input type="radio" name="Type" id="Registered" value="Registered">
-                    <p id="RegisteredText">Registered student</p>
-                </div>
-            </div>
+                    <!-- User type selection -->
+                    <div class="userType">
+                        <div>
+                            <input type="radio" name="Type" id="Unregistered" value="Unregistered">
+                            <p id="UnregisteredText">Unregistered</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="Type" id="Registered" value="Registered">
+                            <p id="RegisteredText">Registered student</p>
+                        </div>
+                    </div>
 
-            <!-- Email and password input fields -->
-            <div class="mainForm">
-                <div>
-                    Email : <input type="text" name="email">
-                </div>
-                <div>
-                    Password : <input type="text" name="password">
-                </div>
-                <button type="submit" name="Submit">Submit</button>
-            </div>
-        </form>
+                    <!-- Email and password input fields -->
+                    <div class="mainForm">
+                        <div>
+                            Email : <input type="text" name="email">
+                        </div>
+                        <div>
+                            Password : <input type="text" name="password">
+                        </div>
+                        <button type="submit" name="Submit">Submit</button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
     </center>
 
     <!-- Login script -->
@@ -83,10 +88,10 @@ if (isset($_POST["Submit"])) {
 
         // If the user is registered
         if ($result->num_rows == 1) {
-            while($row = $result->fetch_assoc()){
-                header('location:http://localhost/Y1S2-Group-Project/registered.php?regid='.$row["Reg_ID"]);
+            while ($row = $result->fetch_assoc()) {
+                header('location:http://localhost/Y1S2-Group-Project/registered.php?regid=' . $row["Reg_ID"]);
             }
-            
+
         }
     }
 }

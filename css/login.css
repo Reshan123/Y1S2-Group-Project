@@ -1,5 +1,16 @@
+body{
+    overflow: hidden;
+}
+
 .form{
     width: 50vw;    
+    background: rgba(219, 219, 219, 0.75);
+    padding: 50px 100px;
+    border-radius: 20px;
+}
+
+fieldset{
+    border-radius: 15px;
 }
 
 .form .userType{

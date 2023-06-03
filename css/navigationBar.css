@@ -2,13 +2,16 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-image: url(../assets/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(216, 248, 248);
+    background-color: rgba(216, 248, 248, 0.75);
 }
 
 body nav div{
