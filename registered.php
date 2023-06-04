@@ -29,7 +29,7 @@ require "DatabaseConnect.php";
             <p id="logInStatus">
                 <?php
                 // Get the User ID from the URL.
-                $RegID = $_GET["regid"];
+                $RegID = $_COOKIE["ID"];
                 // Retrieve the username of the User from the database.
                 $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
                 while ($row = $resultUsersName->fetch_assoc()) {

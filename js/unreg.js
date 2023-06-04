@@ -1,8 +1,10 @@
 let raiseTForm = document.getElementById("raiseTForm");
 let commonQ = document.getElementById("commonQ");
 
+
 function logout(){
     window.location = "http://localhost/Y1S2-Group-Project/login.php";
+    document.cookie = "ID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 } 
 
 

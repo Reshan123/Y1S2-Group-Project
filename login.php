@@ -1,5 +1,12 @@
 <?php
 require "DatabaseConnect.php";
+if (isset($_COOKIE["ID"])){
+    if ($_COOKIE["ID"] == "unreg"){
+        header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
+    } else if (is_numeric($_COOKIE["ID"])){
+        header('location:http://localhost/Y1S2-Group-Project/registered.php');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,17 +88,19 @@ if (isset($_POST["Submit"])) {
     // Check if the user is unregistered
     if ($type == "Unregistered" && $email == "" && $password == "") {
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
+        setcookie("ID" , "unreg" , time() + 3600 , "/");
     } else if ($type == "Registered") {
         // Check if the user is registered by querying the database
         $sql = "SELECT * FROM registered_user WHERE Reg_email = '$email' AND Reg_password = '$password'";
         $result = $conn->query($sql);
-
+        
         // If the user is registered
-        if ($result->num_rows == 1) {
+        if ($result->num_rows == 1) { 
             while ($row = $result->fetch_assoc()) {
-                header('location:http://localhost/Y1S2-Group-Project/registered.php?regid=' . $row["Reg_ID"]);
+                setcookie("ID" , $row["Reg_ID"] , time() + 3600 , "/");
+                header('location:http://localhost/Y1S2-Group-Project/registered.php');
             }
-
+            
         }
     }
 }

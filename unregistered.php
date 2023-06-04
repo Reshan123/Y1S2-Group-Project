@@ -24,7 +24,7 @@ require "DatabaseConnect.php";
             <p class="button" onclick="showRaiseT()">Raise Ticket</p>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
+                <button class="logout" value="logout" onclick="logout()">Logout</button>
             </div>
             <p id="logInStatus">Unregistered User</p>
         </div>

@@ -24,3 +24,4 @@ function RegisteredSelect() {
 function Gotohome() {
   window.location = "http://localhost/Y1S2-Group-Project/";
 }
+
