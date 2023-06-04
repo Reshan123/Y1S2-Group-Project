@@ -14,12 +14,13 @@ require "DatabaseConnect.php";
 
 <body>
     <nav>
-        <div class="leftAlign" onclick="showCommonQ()">
+        <div class="leftAlign">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page > Unregistered</p>
 
         </div>
         <div class="rightAlign">
+            <p class="button" onclick="showCommonQ()">Common Questions</p>
             <p class="button" onclick="showRaiseT()">Raise Ticket</p>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
@@ -32,11 +33,11 @@ require "DatabaseConnect.php";
     <form action="unregistered.php" method="post" id="raiseTForm" class="raiseTForm">
         <fieldset style="border-radius:15px;">
             <legend>Raise Ticket</legend>
-            Ticket Title : <br> 
+            Ticket Title : <br>
             <input type="text" name="T_title" size="40" style="padding:15px;"> <br>
-            Personal Email : <br> 
+            Personal Email : <br>
             <input type="text" name="T_pemail" size="40" style="padding:15px;"> <br>
-            <label>Ticket Body :</label> <br> 
+            <label>Ticket Body :</label> <br>
             <textarea name="T_body" cols="100" rows="10" style="padding:15px;"></textarea> <br>
             <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
         </fieldset>
@@ -50,9 +51,9 @@ require "DatabaseConnect.php";
         while ($row = $resultCommonQ->fetch_assoc()) {
             echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
-            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Responder_ID = " . $row["Responder_ID"]);
+            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
             while ($row = $resultResponderID->fetch_assoc()) {
-                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Responder_username"] . "</div>";
+                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
             }
         }
         ?>

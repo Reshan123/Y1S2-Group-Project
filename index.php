@@ -35,9 +35,9 @@ require "DatabaseConnect.php";
     while ($row = $resultCommonQ->fetch_assoc()) {
       echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
-      $resultResponderID = $conn->query("SELECT * FROM responder WHERE Responder_ID = " . $row["Responder_ID"]);
+      $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
       while ($row = $resultResponderID->fetch_assoc()) {
-        echo "<div class=" . "addedBy" . ">Added by :- " . $row["Responder_username"] . "</div>";
+        echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
       }
     }
     ?>

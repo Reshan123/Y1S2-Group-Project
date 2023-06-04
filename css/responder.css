@@ -8,6 +8,14 @@ body .common_q{
     width: 80%;
     height: 80vh;
     overflow-y: scroll;
+    position: relative;
+}
+
+body .common_q h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
 }
 
 body .common_q .title{
@@ -30,6 +38,11 @@ body .common_q .addedBy{
     width: 40%;
 }
 
+body .common_q .button{
+    position: absolute;
+    top: 10%;
+    right: 5%; 
+}
 
 
 

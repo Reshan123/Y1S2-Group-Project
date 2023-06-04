@@ -16,7 +16,7 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
 
     <!-- Navigation bar -->
     <nav>
-        <div class="leftAlign" id="supportLogo" onclick="showRegTickets()">
+        <div class="leftAlign" id="supportLogo">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page > Staff</p>
         </div>
@@ -72,7 +72,7 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
         $resultRegT = $conn->query($sqlRegT);
         while ($row = $resultRegT->fetch_assoc()) {
             // Display each unregistered ticket.
-            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["UnregT_title"] . "</div><br/><div class=" . "body" . ">" . $row["UnregT_body"] . "</div><br/><br/><form action = mailto:".$row["UnregT_pemail"]."><button type="."submit"." class=" . "button".")" . ">Reply</button></form>";
+            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["UnregT_title"] . "</div><br/><div class=" . "body" . ">" . $row["UnregT_body"] . "</div><br/><br/><form action = mailto:" . $row["UnregT_pemail"] . "><button type=" . "submit" . " class=" . "button" . ")" . ">Reply</button></form>";
             echo "<div class=" . "addedBy" . ">Added by :- " . $row["UnregT_pemail"] . "</div></div>";
         }
         ?>
@@ -80,23 +80,20 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
 
     <!-- Common Questions -->
     <div class="common_q" id="commonQ">
+        <h1>Common Questions</h1>
         <?php
-        // Retrieve all common questions from the database.
         $sqlCommonQ = "SELECT * FROM common_q";
         $resultCommonQ = $conn->query($sqlCommonQ);
         while ($row = $resultCommonQ->fetch_assoc()) {
-            // Display each common question.
-            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
+            echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
-            // Retrieve the username of the Responder who added the question.
-            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Responder_ID = " . $row["Responder_ID"]);
+            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
             while ($row = $resultResponderID->fetch_assoc()) {
-                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Responder_username"] . "</div></div>";
+                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
             }
         }
         ?>
-
-        <!-- Ayathma Form -->
+        <p class="button">Add common questions</p>  
     </div>
 
     <!-- Reply Section -->

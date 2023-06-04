@@ -14,12 +14,13 @@ require "DatabaseConnect.php";
 
 <body>
     <nav>
-        <div class="leftAlign" onclick="goHome()">
+        <div class="leftAlign">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page > Registered</p>
 
         </div>
         <div class="rightAlign">
+            <p class="button" onclick="goHome()">Home</p>
             <p class="button" onclick="showRaiseT()">Raise Ticket</p>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
@@ -40,7 +41,7 @@ require "DatabaseConnect.php";
     </nav>
 
     <div class="askedQ" id="askedQ">
-        
+
         <?php
         $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
         if ($resultUserTickets->num_rows > 0) {
@@ -72,10 +73,10 @@ require "DatabaseConnect.php";
     <form action="registered.php" method="post" id="raiseTForm" class="raiseTForm">
         <fieldset style="border-radius:15px;">
             <legend>Raise Ticket</legend>
-            Ticket Title : <br> 
+            Ticket Title : <br>
             <input type="text" name="T_title" size="40" style="padding:15px;"> <br>
             <!-- insert a dropdown <br> -->
-            <label>Ticket Body :</label> <br> 
+            <label>Ticket Body :</label> <br>
             <textarea name="T_body" cols="100" rows="10" style="padding:15px;"></textarea> <br>
             <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
         </fieldset>
