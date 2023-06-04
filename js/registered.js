@@ -1,5 +1,7 @@
 let reply = document.getElementById("reply");
 let replyClass = document.getElementsByClassName("reply");
+let regTForm = document.getElementById("raiseTForm");
+let askedQ = document.getElementById("askedQ");
 
 function logout(){
     window.location = "http://localhost/Y1S2-Group-Project/login.php";
@@ -20,4 +22,14 @@ function showSolution(id) {
     let replyID = document.getElementById(id);
     closeAllReply();
     replyID.style.display = "block";
+}
+
+function showRaiseT() {
+    regTForm.style.display = "block";
+    askedQ.style.display = "none";
+}
+
+function goHome() {
+    regTForm.style.display = "none";
+    askedQ.style.display = "block";
 }

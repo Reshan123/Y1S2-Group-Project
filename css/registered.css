@@ -1,12 +1,17 @@
+body{
+    overflow: hidden;
+}
+
 body .askedQ{
     background-color: rgba(219, 219, 219, 0.75);
     border-radius: 50px;
     margin: auto;
     margin-top: 25px;
     width: 80%;
-    height: 80vh;
+    height: 70vh;
     overflow-y: scroll;
     padding-bottom: 50px;
+    position: relative;
 }
 
 body .askedQ h1{
@@ -14,6 +19,12 @@ body .askedQ h1{
     font-size: 2.5em;
     font-weight: 900;
     color: rgb(13, 127, 203);
+}
+
+body .askedQ .hideReply{
+    position: absolute;
+    top: 10%;
+    right: 5%; 
 }
 
 body .askedQ .ticket{
@@ -39,13 +50,42 @@ body .askedQ .ticket .body{
 
 body .askedQ .ticket .reply{
     display: none;
-    width: 50%;
+    width: 65%;
     align-self: center;
     text-align: justify;
+    font-size: 1.1em;
     margin: 20px 0px;
 }
 
 body .askedQ .ticket .button{
     width: 40%;
     align-self: flex-end;
+}
+
+
+
+
+
+
+
+
+body .raiseTForm {
+    display: none;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+body .raiseTForm fieldset {
+    padding: 30px 40px;
+}
+
+body .raiseTForm fieldset > * {
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+
+body .raiseTForm fieldset button{
+    padding: 10px 15px;
 }

@@ -14,7 +14,7 @@ require "DatabaseConnect.php";
 
 <body>
     <nav>
-        <div class="leftAlign" onclick="closeAllReply()">
+        <div class="leftAlign" onclick="goHome()">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page > Registered</p>
 
@@ -39,8 +39,8 @@ require "DatabaseConnect.php";
         </div>
     </nav>
 
-    <div class="askedQ">
-
+    <div class="askedQ" id="askedQ">
+        
         <?php
         $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
         if ($resultUserTickets->num_rows > 0) {
@@ -48,6 +48,7 @@ require "DatabaseConnect.php";
             while ($rowTicket = $resultUserTickets->fetch_assoc()) {
                 $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " . $rowTicket["RegT_ID"]);
                 if ($resultTicketReply->num_rows > 0) {
+                    echo "<div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>";
                     while ($rowReply = $resultTicketReply->fetch_assoc()) {
 
                         echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
@@ -67,6 +68,18 @@ require "DatabaseConnect.php";
         }
         ?>
     </div>
+
+    <form action="registered.php" method="post" id="raiseTForm" class="raiseTForm">
+        <fieldset style="border-radius:15px;">
+            <legend>Raise Ticket</legend>
+            Ticket Title : <br> 
+            <input type="text" name="T_title" size="40" style="padding:15px;"> <br>
+            <!-- insert a dropdown <br> -->
+            <label>Ticket Body :</label> <br> 
+            <textarea name="T_body" cols="100" rows="10" style="padding:15px;"></textarea> <br>
+            <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
+        </fieldset>
+    </form>
 
 
 
