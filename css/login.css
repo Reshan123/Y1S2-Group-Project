@@ -4,7 +4,7 @@ body{
 
 .form{
     width: 50vw;    
-    background: rgba(219, 219, 219, 0.75);
+    background: #DBDFEA;
     padding: 50px 100px;
     border-radius: 20px;
 }
@@ -33,7 +33,6 @@ fieldset{
 .form .mainForm{
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
 }
 
 

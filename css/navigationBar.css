@@ -5,13 +5,14 @@ body {
     background-image: url(../assets/background1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    color: #394867;
 }
 
 body nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(216, 248, 248, 0.75);
+    background-color: #DBDFEA;
 }
 
 body nav div{

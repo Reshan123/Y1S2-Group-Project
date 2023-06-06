@@ -9,7 +9,7 @@
 
 body .reply{
     display:  block;
-    background-color: rgba(219, 219, 219, 0.75);
+    background-color: #DBDFEA;
     border-radius: 50px;
     margin: auto;
     margin-top: 25px;
@@ -44,7 +44,7 @@ body .reply form .solution{
 
 
 body .reply form .solution textarea{
-    background-color: rgba(163, 241, 241, 0.75);
+    background-color: #DBDFEA;
     border-radius: 10px;
 }
 
