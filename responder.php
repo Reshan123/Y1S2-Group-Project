@@ -1,7 +1,6 @@
 <?php
 require "DatabaseConnect.php";
-$url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-// echo $url;
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +30,12 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
             <p id="logInStatus">
                 <?php
                 // Get the Responder ID from the URL.
-                $ResponderID = $_GET["responderid"];
+                if (isset($_COOKIE["ResID"])){
+                    $ResponderID = $_COOKIE["ResID"];
+                } else {
+                    header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
+                }
+                
                 // Retrieve the username of the Responder from the database.
                 $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
                 $resultManagerName = $conn->query($sqlManagerName);
@@ -52,13 +56,23 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
         $resultRegT = $conn->query($sqlRegT);
         while ($row = $resultRegT->fetch_assoc()) {
             // Display each registered ticket.
-            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["RegT_title"] . "</div><br/><div class=" . "body" . ">" . $row["RegT_body"] . "</div><br/><button class=" . "button" . " onclick=" . "reply(" . $row["RegT_ID"] . ")" . ">Reply</button>";
-
+            echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["RegT_title"] . "</div><br/><div class=" . "body" . ">" . $row["RegT_body"] . "</div><br/>";
+            $sqlReplyCheck = $conn->query("SELECT * FROM solution WHERE RegT_ID=". $row["RegT_ID"]);
+            if ($sqlReplyCheck->num_rows == 0){
+                echo "<form action=responder.php method=post><input name=regid value=".$row["RegT_ID"]."><button class=button name=reply>Reply</button></form>";
+            } else {
+                echo "<button class=button>Already Replied</button>";
+            }
             // Retrieve the username of the user who added the ticket.
             $resultStuID = $conn->query("SELECT * FROM registered_user WHERE Reg_ID = " . $row["Reg_ID"]);
             while ($row = $resultStuID->fetch_assoc()) {
                 echo "<div class=" . "addedBy" . ">Added by :- " . $row["Reg_username"] . "</div> </div>";
             }
+        }
+
+        if(isset($_POST["reply"])){
+            $_SESSION["RegID"] = $_POST["regid"];
+            header("location:http://localhost/Y1S2-Group-Project/reply.php");
         }
         ?>
     </div>
@@ -96,42 +110,6 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
         <p class="button">Add common questions</p>  
     </div>
 
-    <!-- Reply Section -->
-    <div class="reply" id="reply">
-        <?php
-        // If a ticket ID is set in the URL, display the reply section.
-        if (isset($_GET["ID"])) {
-            $ID = $_GET["ID"];
-            $resultGetSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =" . $ID);
-
-            // If a solution has already been added for this ticket, display an alert.
-            while ($row = $resultGetSolution->fetch_assoc()) {
-                echo '<script>';
-                echo 'alert("Already answered");';
-                echo 'document.getElementById("reply").style.display = "block";';
-                echo 'document.getElementById("registered_tickets").style.display = "block";';
-                echo '</script>';
-            }
-
-            // If a solution has not been added for this ticket, display the reply form.
-            if ($resultGetSolution->num_rows == 0) {
-                $resultTicket = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $ID);
-                while ($row = $resultTicket->fetch_assoc()) {
-                    echo "<h1 class=" . "title" . ">" . $row["RegT_title"] . "</h1>";
-                    $resultTicketBody = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $ID);
-                    while ($row = $resultTicketBody->fetch_assoc()) {
-                        echo "<div class=" . "body" . ">" . $row["RegT_body"] . "</div>";
-                    }
-                    echo "<form action=$url method=" . "post" . ">
-                            <div class=" . "solution" . ">Solution : <textarea name=" . "solution" . " cols=" . "100" . " rows=" . "10" . " style=" . "padding:15px;" . "></textarea></div>
-                            <button type=" . "submit" . " name=" . "solutionsubmit" . " class=" . "button" . ">Submit</button>
-                        </form>";
-                }
-            }
-        }
-        ?>
-    </div>
-
     <?php
     // If a ticket ID is set in the URL, display the reply section.
     if (isset($_GET["ID"])) {
@@ -150,31 +128,3 @@ $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_
 </body>
 
 </html>
-
-<?php
-// If the solution form is submitted, add the solution to the database.
-if (isset($_POST["solutionsubmit"])) {
-    // Retrieve the highest solution ID from the database.
-    $resultSID = $conn->query("SELECT S_ID FROM solution");
-    $sid = 0;
-    while ($row = $resultSID->fetch_assoc()) {
-        if ($sid < $row["S_ID"]) {
-            $sid = $row["S_ID"];
-        }
-    }
-    $sid++;
-    $solutionText = $_POST["solution"];
-
-    // Insert the solution into the database.
-    $sqlInsertSolution = "INSERT INTO solution (S_ID,S_Body,RegT_ID,Res_ID) VALUES ($sid,'$solutionText' , $ID , $ResponderID)";
-
-    if ($conn->query($sqlInsertSolution) === TRUE) {
-        echo '<script>';
-        echo 'alert("Solution Added");';
-        echo 'document.getElementById("reply").style.display = "block";';
-        echo 'document.getElementById("registered_tickets").style.display = "block";';
-        echo '</script>';
-    }
-
-}
-?>

@@ -1,5 +1,6 @@
-<?php 
+<?php
 require "DatabaseConnect.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,28 +31,32 @@ require "DatabaseConnect.php";
         <!-- Admin login form -->
         <form action="adminlogin.php" method="post" class="form">
 
-            <!-- User type selection -->
-            <div class="userType">
-                <div>
-                    <input type="radio" name="Type" id="Staff" value="Staff">
-                    <p id="StaffText">Staff</p>
-                </div>
-                <div>
-                    <input type="radio" name="Type" id="Manager" value="Manager">
-                    <p id="ManagerText">Manager</p>
-                </div>
-            </div>
 
-            <!-- Email and password input fields -->
-            <div class="mainForm">
-                <div>
-                    Email : <input type="text" name="email">
+
+            <fieldset>
+                <legend>Log in</legend>
+                <!-- User type selection -->
+                <div class="userType">
+                    <div>
+                        <input type="radio" name="Type" id="Staff" value="Staff">
+                        <p id="StaffText">Staff</p>
+                    </div>
+                    <div>
+                        <input type="radio" name="Type" id="Manager" value="Manager">
+                        <p id="ManagerText">Manager</p>
+                    </div>
                 </div>
-                <div>
-                    Password : <input type="text" name="password">
+                <!-- Email and password input fields -->
+                <div class="mainForm">
+                    <div>
+                        Email : <input type="text" name="email">
+                    </div>
+                    <div>
+                        Password : <input type="text" name="password">
+                    </div>
+                    <button type="submit" name="Submit">Submit</button>
                 </div>
-                <button type="submit" name="Submit">Submit</button>
-            </div>
+            </fieldset>
         </form>
     </center>
 
@@ -89,7 +94,8 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
 
         // If the staff member exists, redirect to the staff member page with the staff member ID
         while ($row = $result->fetch_assoc()) {
-            header("location:http://localhost/Y1S2-Group-Project/responder.php?responderid=" . $row["Res_ID"]);
+            header("location:http://localhost/Y1S2-Group-Project/responder.php");
+            setcookie("ResID", $row["Res_ID"], time() + 3600, "/");
         }
     } else {
         // If user type is not selected, display an error message
