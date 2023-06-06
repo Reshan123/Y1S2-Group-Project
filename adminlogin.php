@@ -1,24 +1,25 @@
 <?php
-require "DatabaseConnect.php";
+require "DatabaseConnect.php"; // Include the file that connects to the database
 
 ?>
+
+<!-- HTML code for the login form and other elements -->
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navigationBar.css">
-
 </head>
-
 <body>
     <!-- Navigation bar -->
     <nav>
+        <!-- Left-aligned logo and text -->
         <div class="leftAlign" id="supportLogo">
             <img src="assets/logo.png" alt="LOGO" />
             <p>Support Page</p>
         </div>
+        <!-- Right-aligned profile picture and login status -->
         <div class="rightAlign">
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
@@ -30,9 +31,6 @@ require "DatabaseConnect.php";
     <center style="padding:100px 0px;">
         <!-- Admin login form -->
         <form action="adminlogin.php" method="post" class="form">
-
-
-
             <fieldset>
                 <legend>Log in</legend>
                 <!-- User type selection -->
@@ -60,9 +58,9 @@ require "DatabaseConnect.php";
         </form>
     </center>
 
-    <script src="js/adminlogin.js"></script>
-</body>
+    <script src="js/adminlogin.js"></script> <!-- Include JavaScript file for admin login form -->
 
+</body>
 </html>
 
 <?php
@@ -86,7 +84,7 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
         // If the manager exists, redirect to the manager page with the manager ID
         while ($row = $result->fetch_assoc()) {
             header("location:http://localhost/Y1S2-Group-Project/manager.php");
-            setcookie("ManID",  $row["Man_ID"], time() + 3600, "/");
+            setcookie("ManID",  $row["Man_ID"], time() + 3600, "/"); // Set a cookie with the manager ID
         }
     } else if ($type == "Staff") {
         // Query the database to check if the staff member exists
@@ -96,7 +94,7 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
         // If the staff member exists, redirect to the staff member page with the staff member ID
         while ($row = $result->fetch_assoc()) {
             header("location:http://localhost/Y1S2-Group-Project/responder.php");
-            setcookie("ResID", $row["Res_ID"], time() + 3600, "/");
+            setcookie("ResID", $row["Res_ID"], time() + 3600, "/"); // Set a cookie with the staff member ID
         }
     } else {
         // If user type is not selected, display an error message

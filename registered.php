@@ -2,7 +2,6 @@
 require "DatabaseConnect.php";
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -45,17 +44,17 @@ require "DatabaseConnect.php";
     </nav>
 
     <div class="askedQ" id="askedQ">
-
         <?php
+        // Retrieve tickets raised by the user
         $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
         if ($resultUserTickets->num_rows > 0) {
             echo "<h1>Raised Questions</h1>";
             while ($rowTicket = $resultUserTickets->fetch_assoc()) {
+                // Check if the ticket has a reply
                 $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " . $rowTicket["RegT_ID"]);
                 if ($resultTicketReply->num_rows > 0) {
                     echo "<div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>";
                     while ($rowReply = $resultTicketReply->fetch_assoc()) {
-
                         echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                         echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
                         echo "<button class=button onclick=showSolution(" . $rowReply["S_ID"] . ")>Show Reply</button>";
@@ -85,8 +84,6 @@ require "DatabaseConnect.php";
             <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
         </fieldset>
     </form>
-
-
 
     <script src="js/registered.js"></script>
 </body>

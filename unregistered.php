@@ -1,5 +1,5 @@
 <?php
-require "DatabaseConnect.php";
+require "DatabaseConnect.php"; // Include the file that establishes the database connection.
 ?>
 
 
@@ -46,11 +46,13 @@ require "DatabaseConnect.php";
 
     <div class="common_q" id="commonQ">
         <?php
+        // Retrieve common questions from the database and display them.
         $sqlCommonQ = "SELECT * FROM common_q";
         $resultCommonQ = $conn->query($sqlCommonQ);
         while ($row = $resultCommonQ->fetch_assoc()) {
             echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
+            // Retrieve the username of the Responder who added the common question.
             $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
             while ($row = $resultResponderID->fetch_assoc()) {
                 echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
@@ -66,10 +68,12 @@ require "DatabaseConnect.php";
 
 <?php
 if (isset($_POST["Submit"])) {
+    // Get the values from the form submission.
     $t_title = $_POST["T_title"];
     $t_pemail = $_POST["T_pemail"];
     $t_body = $_POST["T_body"];
 
+    // Generate a new UnregT_ID for the new unregistered ticket.
     $resultUnregTID = $conn->query("SELECT UnregT_ID FROM unreg_tickets");
     $UnregTID = 0;
     while ($row = $resultUnregTID->fetch_assoc()) {
@@ -79,10 +83,11 @@ if (isset($_POST["Submit"])) {
     }
     $UnregTID++;
 
+    // Insert the new unregistered ticket into the database.
     $sqlInsertUnregT = "INSERT INTO unreg_tickets (UnregT_ID,UnregT_title, UnregT_body, UnregT_pemail) VALUES ($UnregTID,'$t_title','$t_body','$t_pemail')";
 
     if ($conn->query($sqlInsertUnregT) == TRUE) {
-        echo "<script> alert('Your ticket has been raised. Please await for reply through $t_pemail.' ) </script>";
+        echo "<script> alert('Your ticket has been raised. Please await a reply through $t_pemail.' ) </script>";
     }
 }
 

@@ -1,5 +1,5 @@
 <?php
-require "DatabaseConnect.php";
+require "DatabaseConnect.php"; // Include the file that connects to the database
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,7 @@ require "DatabaseConnect.php";
 <body>
 
   <nav>
+    <!-- Navigation bar -->
     <div class="leftAlign" id="supportLogo">
       <img src="assets/logo.png" alt="LOGO" />
       <p>Support Page</p>
@@ -25,16 +26,16 @@ require "DatabaseConnect.php";
     </div>
   </nav>
 
-
-
-
   <div class="common_q">
     <?php
     $sqlCommonQ = "SELECT * FROM common_q";
     $resultCommonQ = $conn->query($sqlCommonQ);
+
+    // Fetch and display common questions from the database
     while ($row = $resultCommonQ->fetch_assoc()) {
       echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
+      // Fetch and display the responder who added the question
       $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
       while ($row = $resultResponderID->fetch_assoc()) {
         echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
@@ -43,8 +44,7 @@ require "DatabaseConnect.php";
     ?>
   </div>
 
-
-  <script src="js/index.js"></script>
+  <script src="js/index.js"></script> <!-- Include JavaScript file for additional functionality -->
 
 </body>
 
