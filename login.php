@@ -55,7 +55,7 @@ if (isset($_COOKIE["ID"])){
                     <!-- Email and password input fields -->
                     <div class="mainForm">
                         <div>
-                            test : <input type="text" name="email">
+                            Email : <input type="text" name="email">
                         </div>
                         <div>
                             Password : <input type="text" name="password">
