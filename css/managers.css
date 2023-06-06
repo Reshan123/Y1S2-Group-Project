@@ -20,6 +20,11 @@ body table tbody tr td{
     grid-template-rows: 10px 25px 25px;
 }
 
+body table tbody tr td:nth-child(2){
+    margin-right:70px;
+    margin-left: 20px;
+}
+
 body table tbody tr:nth-child(1){
     font-weight: 900;
     font-size: 1.3em;

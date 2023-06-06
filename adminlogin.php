@@ -80,12 +80,13 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
     // Check if the user is a manager
     if ($type == "Manager") {
         // Query the database to check if the manager exists
-        $sql = "SELECT * FROM manager WHERE Manager_email='$email' AND Manager_password='$password';";
+        $sql = "SELECT * FROM manager WHERE Man_email='$email' AND Man_password='$password';";
         $result = $conn->query($sql);
 
         // If the manager exists, redirect to the manager page with the manager ID
         while ($row = $result->fetch_assoc()) {
-            header("location:http://localhost/Y1S2-Group-Project/manager.php?managerid=" . $row["Manager_ID"]);
+            header("location:http://localhost/Y1S2-Group-Project/manager.php");
+            setcookie("ManID",  $row["Man_ID"], time() + 3600, "/");
         }
     } else if ($type == "Staff") {
         // Query the database to check if the staff member exists

@@ -22,11 +22,11 @@ require "DatabaseConnect.php";
                 <button class="logout" onclick="logout()">Logout</button>
             </div>
             <p id="logInStatus">
-                <?php $managerID = $_GET["managerid"];
-                $sqlManagerName = "SELECT * FROM manager WHERE Manager_ID='$managerID'";
+                <?php $managerID = $_COOKIE["ManID"];
+                $sqlManagerName = "SELECT * FROM manager WHERE Man_ID='$managerID'";
                 $resultManagerName = $conn->query($sqlManagerName);
                 while ($row = $resultManagerName->fetch_assoc()) {
-                    echo $row["Manager_username"];
+                    echo $row["Man_username"];
                 }
                 ?>
             </p>
@@ -44,11 +44,11 @@ require "DatabaseConnect.php";
     echo "<tr><td>ID</td><td>Email</td><td>Name</td><td>Password</td><td>Action</td></tr>";
     while ($row = $resultGetResponders->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row['Responder_ID'] . "</td>";
-        echo "<td>" . $row['Responder_email'] . "</td>";
-        echo "<td>" . $row['Responder_username'] . "</td>";
-        echo "<td>" . $row['Responder_password'] . "</td>";
-        echo "<td><a href='update.php?id=" . $row['Responder_ID'] . "'>Update</a></td>";
+        echo "<td>" . $row['Res_ID'] . "</td>";
+        echo "<td>" . $row['Res_email'] . "</td>";
+        echo "<td>" . $row['Res_username'] . "</td>";
+        echo "<td>" . $row['Res_password'] . "</td>";
+        echo "<td><a href='update.php?id=" . $row['Res_ID'] . "'>Update</a></td>";
         echo "</tr>";
     }
     echo "</table>";
