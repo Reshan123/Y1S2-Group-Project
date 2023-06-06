@@ -67,12 +67,15 @@ body nav .rightAlign .profileImage:hover .logout{
 }
 
 .button{
-    border: 2px solid rgb(183, 181, 181);
+    border: 2px solid rgb(38, 95, 144);
     border-radius: 5px;
     padding: 5px 10px;
     margin-right: 15px;
     box-shadow: 2px 2px;
     cursor: pointer;
+    color: rgb(38, 95, 144);
+    background-color: #39486700;
+    
 }
 
 .button:active{
