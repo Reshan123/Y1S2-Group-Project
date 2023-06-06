@@ -7,11 +7,7 @@ console.log("je");
 
 function changePage () {
     let currentURL = window.location.href;
-
-    console.log(currentURL);
-    if (currentURL.length == 36){
-        currentURL += "login.php";
-    }
+    currentURL += "login.php";
     window.location = currentURL;
 }
 
