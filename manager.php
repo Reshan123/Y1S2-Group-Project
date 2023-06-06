@@ -48,7 +48,7 @@ require "DatabaseConnect.php";
         echo "<td>" . $row['Res_email'] . "</td>";
         echo "<td>" . $row['Res_username'] . "</td>";
         echo "<td>" . $row['Res_password'] . "</td>";
-        echo "<td><a href='update.php?id=" . $row['Res_ID'] . "'>Update</a></td>";
+        echo "<td><a class=update href='manageresponder.php?UpdateID=" . $row['Res_ID'] . "'>Update</a><a class=delete href='manageresponder.php?DeleteID=" . $row['Res_ID'] . "'>Delete</a></td>";
         echo "</tr>";
     }
     echo "</table>";
