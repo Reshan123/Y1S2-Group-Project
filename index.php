@@ -7,7 +7,7 @@ require "DatabaseConnect.php";
 <head>
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/navigationBar.css" />
-  <title>Document</title>
+  <title>UJ</title>
 </head>
 
 <body>
