@@ -44,16 +44,28 @@ if (isset($_COOKIE["ManID"])) {
         <?php
         if (isset($_GET["UpdateID"])) {
 
+            $updateID = $_GET["UpdateID"];
+
+            $resultResponderDetails = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $updateID);
+
+            while ($row = $resultResponderDetails->fetch_assoc()) {
+                echo "<fieldset>
+                        <legend>Update responder</legend>
+                        <form action=manageresponder.php method=post>
+                            <p>Name</p>  <input type=text name=name id=name value=".$row["Res_username"]."><br>
+                            <p>Email</p>  <input type=text name=email id=email value=".$row["Res_email"]."><br>
+                            <p>Password</p>  <input type=text name=pwd id=pwd value=".$row["Res_password"]."><br>
+                            <button class=button name=update>Update</button>
+                        </form>
+                    </fieldset>";
+            }
+
         } else if (isset($_GET["DeleteID"])) {
 
         }
         ?>
 
-        <form action="manageresponder.php" method="post">
-            Name : <input type="text" name="name" id="name"><br>
-            Email : <input type="text" name="email" id="email"><br>
-            Password : <input type="text" name="pwd" id="pwd">
-        </form>
+
     </div>
 
 

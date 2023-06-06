@@ -5,4 +5,31 @@ body .update{
     height: 80vh;
     background-color: #DBDFEA;
     border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body .update fieldset {
+    
+    width: 50%;
+}
+
+body .update fieldset form {
+    padding: 30px 50px;
+}
+
+body .update fieldset form p{
+    font-size: 1.1em;
+}
+
+body .update fieldset form input{
+    padding: 8px 15px;
+    width: 45%;
+    border-radius: 15px;
+}
+
+body .update fieldset form button{
+    margin: 20px 5px;
+    padding: 10px 15px;
 }
