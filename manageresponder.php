@@ -40,6 +40,21 @@ if (isset($_COOKIE["ManID"])) {
     </nav>
 
 
+    <div class="update">
+        <?php
+        if (isset($_GET["UpdateID"])) {
+
+        } else if (isset($_GET["DeleteID"])) {
+
+        }
+        ?>
+
+        <form action="manageresponder.php" method="post">
+            Name : <input type="text" name="name" id="name"><br>
+            Email : <input type="text" name="email" id="email"><br>
+            Password : <input type="text" name="pwd" id="pwd">
+        </form>
+    </div>
 
 
 
