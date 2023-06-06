@@ -13,7 +13,7 @@ body table {
 body table tr{
     text-align: center;
     display: grid;
-    grid-template-columns: 150px 300px 150px 150px 250px;    
+    grid-template-columns: 150px 300px 150px 150px 200px;    
     grid-template-rows: 10px 25px 25px;
 }
 
