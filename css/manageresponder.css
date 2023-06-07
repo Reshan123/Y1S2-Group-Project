@@ -11,7 +11,7 @@ body .update{
 }
 
 body .update fieldset {
-    
+    border-radius: 10px;
     width: 50%;
 }
 
