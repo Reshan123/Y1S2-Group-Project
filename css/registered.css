@@ -62,7 +62,12 @@ body .askedQ .ticket .button{
     align-self: flex-end;
 }
 
-
+#noReply{
+    border-radius: 10px;
+  
+    align-self: flex-end;
+    box-shadow: 0px 0px;
+}
 
 
 

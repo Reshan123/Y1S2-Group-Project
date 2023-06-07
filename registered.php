@@ -28,7 +28,7 @@ require "DatabaseConnect.php";
             <p id="logInStatus">
                 <?php
                 // Get the User ID from the URL.
-                if (isset($_COOKIE["ID"])){
+                if (isset($_COOKIE["ID"])) {
                     $RegID = $_COOKIE["ID"];
                 } else {
                     header("location:http://localhost/Y1S2-Group-Project/login.php");
@@ -55,15 +55,19 @@ require "DatabaseConnect.php";
                 if ($resultTicketReply->num_rows > 0) {
                     echo "<div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>";
                     while ($rowReply = $resultTicketReply->fetch_assoc()) {
-                        echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
-                        echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
-                        echo "<button class=button onclick=showSolution(" . $rowReply["S_ID"] . ")>Show Reply</button>";
-                        echo "<reply class=reply id=" . $rowReply["S_ID"] . ">" . $rowReply["S_Body"] . "</reply></div>";
+                        $resultResponder = $conn->query("SELECT * FROM responder WHERE Res_ID=" . $rowReply["Res_ID"]);
+                        while ($rowResponder = $resultResponder->fetch_assoc()) {
+                            echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
+                            echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
+                            echo "<button class=button onclick=showSolution(" . $rowReply["S_ID"] . ")>Show Reply</button>";
+                            echo "<reply class=reply id=" . $rowReply["S_ID"] . ">" . $rowReply["S_Body"] . " <br><br> Added By:  " . $rowResponder["Res_username"] . "</reply></div>";
+                        }
+
                     }
                 } else {
                     echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                     echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
-                    echo "<button class=button>Not Replied Yet</button>";
+                    echo "<button class=button id=noReply>Not Replied Yet</button>";
                     echo "</div>";
                 }
             }
