@@ -24,15 +24,15 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
             </div>
-            <p id="logInStatus">Not Logged In</p>
+            <p class="logInStatus" id="logInStatus">Not Logged In</p>
         </div>
     </nav>
 
-    <center style="padding:100px 0px;">
+    <center style="padding:50px 0px;">
         <!-- Admin login form -->
         <form action="adminlogin.php" method="post" class="form">
             <fieldset>
-                <legend>Log in</legend>
+                <legend>Log In</legend>
                 <!-- User type selection -->
                 <div class="userType">
                     <div>
