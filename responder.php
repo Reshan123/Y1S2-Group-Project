@@ -1,6 +1,8 @@
 <?php
 require "DatabaseConnect.php";
 session_start();
+$_SESSION["RegID"] = "";
+$_SESSION["SolID"] = "";
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +63,8 @@ session_start();
             if ($sqlReplyCheck->num_rows == 0){
                 echo "<form action=responder.php method=post><input name=regid value=".$row["RegT_ID"]."><button class=button name=reply>Reply</button></form>";
             } else {
-                echo "<button class=button>Already Replied</button>";
+                echo "<div class=replyAgain><button class=button>Already Replied</button>";
+                echo "<form action=responder.php method=post><input name=solutionid value=".$row["RegT_ID"]."><button class=button name=reply>Change Reply</button></form></div>";
             }
             // Retrieve the username of the user who added the ticket.
             $resultStuID = $conn->query("SELECT * FROM registered_user WHERE Reg_ID = " . $row["Reg_ID"]);
@@ -71,7 +74,11 @@ session_start();
         }
 
         if(isset($_POST["reply"])){
-            $_SESSION["RegID"] = $_POST["regid"];
+            if(isset($_POST["regid"])){
+                $_SESSION["RegID"] = $_POST["regid"];
+            } else if (isset($_POST["solutionid"])) {
+                $_SESSION["SolID"] = $_POST["solutionid"];
+            }
             header("location:http://localhost/Y1S2-Group-Project/reply.php");
         }
         ?>
