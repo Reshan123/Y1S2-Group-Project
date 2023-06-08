@@ -1,18 +1,11 @@
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-image: url(../assets/background1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #394867;
-}
-
 body nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #DBDFEA;
+    position: sticky;
+    top: 5px;
+    border-radius: 15px;
 }
 
 body nav div{
