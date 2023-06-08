@@ -72,25 +72,40 @@ body .askedQ .ticket .button{
 
 
 
+body .raiseT{
+    background-color: #DBDFEA;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    height: 70vh;
+    padding-bottom: 50px;
+    position: relative;
+}
 
 
-body .raiseTForm {
-    display: none;
+
+body .raiseT .raiseTForm {
+    display: block;
     width: 70%;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    padding-top: 10px;
 }
 
-body .raiseTForm fieldset {
-    padding: 30px 40px;
+body .raiseT .raiseTForm fieldset {
+    /* padding: 30px 40px; */
 }
 
-body .raiseTForm fieldset > * {
+body .raiseT .raiseTForm fieldset > * {
     margin: 10px 10px;
     border-radius: 10px;
 }
 
-body .raiseTForm fieldset button{
+body .raiseT .raiseTForm fieldset button{
     padding: 10px 15px;
+}
+
+body .raiseT .raiseTForm fieldset select{
+    padding: 10px 20px;
 }

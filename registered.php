@@ -77,17 +77,26 @@ require "DatabaseConnect.php";
         ?>
     </div>
 
-    <form action="registered.php" method="post" id="raiseTForm" class="raiseTForm">
-        <fieldset style="border-radius:15px;">
-            <legend>Raise Ticket</legend>
-            Ticket Title : <br>
-            <input type="text" name="T_title" size="40" style="padding:15px;"> <br>
-            <!-- insert a dropdown <br> -->
-            <label>Ticket Body :</label> <br>
-            <textarea name="T_body" cols="100" rows="10" style="padding:15px;"></textarea> <br>
-            <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
-        </fieldset>
-    </form>
+    <div class="raiseT">
+        <form action="registered.php" method="post" id="raiseTForm" class="raiseTForm">
+            <fieldset style="border-radius:15px;">
+                <legend>Raise Ticket</legend>
+                Ticket Title : <br>
+                <input type="text" name="T_title" size="40" style="padding:15px;"> <br>
+                Select Category:
+                <select name="category" id="category">
+                    <option value="Scholarship">Scholarship</option>
+                    <option value="Repeats">Repeats</option>
+                    <option value="ClubsAndSocities">Clubs And Socities</option>
+                    <option value="Other">Other</option>
+                </select><br>
+                <label>Ticket Body :</label> <br>
+                <textarea name="T_body" cols="100" rows="10" style="padding:15px;"></textarea> <br>
+                <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
+            </fieldset>
+        </form>
+
+    </div>
 
     <script src="js/registered.js"></script>
 </body>
