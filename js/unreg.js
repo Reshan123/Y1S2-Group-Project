@@ -1,5 +1,5 @@
 let raiseTForm = document.getElementById("raiseTForm");
-let commonQ = document.getElementById("commonQ");
+let commonQ = document.getElementsByClassName("common_q");
 
 
 function logout(){
