@@ -55,10 +55,10 @@ if (isset($_COOKIE["ID"])){
                     <!-- Email and password input fields -->
                     <div class="mainForm">
                         <div>
-                            Email : <input type="text" name="email">
+                            Email : <input type="text" name="email" id="emailInput">
                         </div>
                         <div>
-                            Password : <input type="text" name="password">
+                            Password : <input type="text" name="password" id="PwdInput">
                         </div>
                         <button type="submit" name="Submit">Submit</button>
                     </div>
@@ -80,13 +80,13 @@ $password = "";
 $type = "";
 
 // Check if the login form is submitted
-if (isset($_POST["Submit"])) {
+if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
 
     // Check if the user is unregistered
-    if ($type == "Unregistered" && $email == "" && $password == "") {
+    if ($type == "Unregistered" && $email == "Unreg@my.cornwill.us" && $password == "UnregPassword") {
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
         setcookie("ID" , "unreg" , time() + 3600 , "/");
     } else if ($type == "Registered") {
@@ -102,6 +102,8 @@ if (isset($_POST["Submit"])) {
             }
             
         }
+    }else if ($type == ""){
+        echo "<script>alert('Enter a user type');</script>";
     }
 }
 ?>
