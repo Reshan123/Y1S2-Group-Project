@@ -1,4 +1,5 @@
 body nav{
+    z-index: 4;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +21,7 @@ body nav .rightAlign {
 }
 
 body nav .leftAlign img{
-    width: 200px;
+    width: 120px;
     height: 100px;
 }
 

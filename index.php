@@ -15,7 +15,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
   <nav>
     <!-- Navigation bar -->
     <div class="leftAlign" id="supportLogo">
-      <img src="assets/logo.png" alt="LOGO" />
+      <img src="assets/cornell (1).png" alt="LOGO" />
       <p>Support Page</p>
     </div>
     <div class="rightAlign">
@@ -27,12 +27,11 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
   </nav>
 
   <div class="header">
-    <h1>Welcome Cornwell Univeristy</h1>
-    <p></p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae blanditiis animi delectus voluptate veniam enim architecto itaque veritatis, ab rem distinctio aliquid nihil cum fugiat quibusdam cupiditate odio harum et deserunt. Consequuntur dolorem ab aspernatur eaque quae tenetur dolores totam labore, ipsa officia ad, dolore alias! Veritatis, accusamus eligendi.</p>
+    <img src="assets/Cornell (1).png" alt="LOGO">
+    <h1>Welcome</h1>
   </div>
 
-  <div class="common_q">
+  <div class="common_q" id="commonQ">
     <?php
     $sqlCommonQ = "SELECT * FROM common_q";
     $resultCommonQ = $conn->query($sqlCommonQ);

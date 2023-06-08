@@ -6,38 +6,91 @@ body{
 }
 
 body .header{
+    z-index: 10;
     width: 100%;
     height: 80vh;
-    background-image: url(../assets/background-min.jpg);
+    background-image: radial-gradient( #E6FFFD , #88d5ff);
     background-size: cover;
     /* background-attachment: fixed; */
     border-radius: 15px;
     clip-path: polygon(0 0 , 100% 0, 100% 85% ,0 100%);
-    color: #F6F1F1;
+    color: #146C94;
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    
+    grid-template-columns: 1fr  1fr;
+    position: relative;
 }
 
 body .header h1{
-    margin: 0;
-    font-size: 9.8em;
+    position: absolute;
+    right: 250px;
+    margin-top: 125px;
+    font-size: 12em;
     font-family: 'Dancing Script', cursive;
+    animation: SwipeFromRight .5s ease forwards;
 }
 
-body .header p{
-    margin:auto;
+body .header img{
+    position: absolute;
+    left: 150px;
+    transform: translateY(0%);
     font-size: 1.5em;
     font-family: 'Lobster', cursive;
+    animation: SwipeFromLeft 0.5s ease forwards;
+}
+
+@keyframes SwipeFromLeft {
+    0%{
+        transform: translateX(-1000%);
+    }
+
+    90%{
+        transform: translateX(10%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes SwipeFromRight {
+    0%{
+        transform: translateX(1000%);
+    }
+
+    90%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+        background-color: white;
+    }
+
+    80%{
+        background-color: white;
+    }
+    100%{
+        opacity: 1;
+        background-color: B0DAFF;
+    }
+}
+
+.animate{
+    animation: appear 1s ease-in-out forwards;
 }
 
 body .common_q{
+    z-index: 5;
     width: 80%;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
     display: grid;
-    gap: 50px;
+    gap: 30px;
     grid-template-columns: 1fr 2fr;
 }
 
@@ -45,6 +98,7 @@ body .common_q .ticket{
     background-color: #B0DAFF;
     border-radius: 15px;
     padding: 15px 10px;
+    opacity: 0;
 }
 
 body .common_q .ticket:nth-child(3){
