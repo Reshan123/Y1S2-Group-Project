@@ -44,22 +44,23 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
     </form>
 
 
-    <div class="common_q" id="commonQ">
-        <?php
-        // Retrieve common questions from the database and display them.
-        $sqlCommonQ = "SELECT * FROM common_q";
-        $resultCommonQ = $conn->query($sqlCommonQ);
-        while ($row = $resultCommonQ->fetch_assoc()) {
-            echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
+    <div class="common_q">
+    <?php
+    $sqlCommonQ = "SELECT * FROM common_q";
+    $resultCommonQ = $conn->query($sqlCommonQ);
 
-            // Retrieve the username of the Responder who added the common question.
-            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
-            while ($row = $resultResponderID->fetch_assoc()) {
-                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
-            }
-        }
-        ?>
-    </div>
+    // Fetch and display common questions from the database
+    while ($row = $resultCommonQ->fetch_assoc()) {
+      echo "<div class=ticket><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
+
+      // Fetch and display the responder who added the question
+      $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
+      while ($row = $resultResponderID->fetch_assoc()) {
+        echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div></div>";
+      }
+    }
+    ?>
+  </div>
 
     <script src="js/unreg.js"></script>
 </body>
