@@ -42,7 +42,7 @@ body .common_q{
 }
 
 body .common_q .ticket{
-    background-color: #19A7CE;
+    background-color: #B0DAFF;
     border-radius: 15px;
     padding: 15px 10px;
 }
@@ -72,7 +72,7 @@ body .common_q .ticket .addedBy{
 
 body .footer{
     height: 2em;
-    background-color: #19A7CE;
+    background-color: #B0DAFF;
     border-radius: 15px;
     display: flex;
     align-items: center;
