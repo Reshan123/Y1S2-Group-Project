@@ -1,9 +1,9 @@
 <?php
 require "DatabaseConnect.php";
-if (isset($_COOKIE["ID"])){
-    if ($_COOKIE["ID"] == "unreg"){
+if (isset($_COOKIE["ID"])) {
+    if ($_COOKIE["ID"] == "unreg") {
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
-    } else if (is_numeric($_COOKIE["ID"])){
+    } else if (is_numeric($_COOKIE["ID"])) {
         header('location:http://localhost/Y1S2-Group-Project/registered.php');
     }
 }
@@ -80,30 +80,37 @@ $password = "";
 $type = "";
 
 // Check if the login form is submitted
-if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
+    if (isset($_POST["Submit"]) && !isset($_POST["Type"])) {
+        
+        echo "<script>alert('Enter a user type');</script>";
+
+    } else if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
+
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
 
-    // Check if the user is unregistered
     if ($type == "Unregistered" && $email == "Unreg@my.cornwill.us" && $password == "UnregPassword") {
+        // Check if the user is unregistered
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
-        setcookie("ID" , "unreg" , time() + 3600 , "/");
+        setcookie("ID", "unreg", time() + 3600, "/");
+    }else if ($email == "" || $password == "") {
+        echo "<script>alert('Please fill all the fields');</script>";
     } else if ($type == "Registered") {
         // Check if the user is registered by querying the database
         $sql = "SELECT * FROM registered_user WHERE Reg_email = '$email' AND Reg_password = '$password'";
         $result = $conn->query($sql);
-        
+
         // If the user is registered
-        if ($result->num_rows == 1) { 
+        if ($result->num_rows == 1) {
             while ($row = $result->fetch_assoc()) {
-                setcookie("ID" , $row["Reg_ID"] , time() + 3600 , "/");
+                setcookie("ID", $row["Reg_ID"], time() + 3600, "/");
                 header('location:http://localhost/Y1S2-Group-Project/registered.php');
-            }
-            
+            } 
+
+        } else {
+            echo "<script>alert('Enter valid credentials');</script>";
         }
-    }else if ($type == ""){
-        echo "<script>alert('Enter a user type');</script>";
-    }
+    } 
 }
 ?>
