@@ -15,7 +15,7 @@ session_start();
 <body>
     <nav>
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Staff</p>
         </div>
         <div class="rightAlign">
@@ -72,13 +72,13 @@ session_start();
             $solID = $_SESSION["SolID"];
             $resultSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =" . $solID);
             $resultTicket = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $solID);
-            while($row = $resultTicket->fetch_assoc()){
+            while ($row = $resultTicket->fetch_assoc()) {
                 while ($rowSol = $resultSolution->fetch_assoc()) {
                     echo "<h1 class=" . "title" . ">" . $row["RegT_title"] . "</h1>";
                     echo "<div class=" . "body" . ">" . $row["RegT_body"] . "</div>";
                     echo "<form action=reply.php method=" . "post" . ">
-                            <div class=" . "solution" . ">Solution : <textarea name=" . "solution" . " cols=" . "100" . " rows=" . "10" . " style=" . "padding:15px; >".$rowSol['S_Body']."</textarea></div>
-                            <button type=" . "submit" . " name=" . "solutionsubmit" . " class=" . "button" . ">Submit</button>
+                            <div class=" . "solution" . ">Solution : <textarea name=" . "solutionupdatetext" . " cols=" . "100" . " rows=" . "10" . " style=" . "padding:15px; >" . $rowSol['S_Body'] . "</textarea></div>
+                            <button type=" . "submit" . " name=" . "solutionupdate" . " class=" . "button" . ">Submit</button>
                         </form>";
                 }
             }
@@ -105,7 +105,7 @@ if (isset($_POST["solutionsubmit"])) {
     }
     $sid++;
     $solutionText = $_POST["solution"];
-
+    $ID = $_SESSION["RegID"];
     // Insert the solution into the database.
     $sqlInsertSolution = "INSERT INTO solution (S_ID,S_Body,RegT_ID,Res_ID) VALUES ($sid,'$solutionText' , $ID , $ResponderID)";
 
@@ -115,5 +115,18 @@ if (isset($_POST["solutionsubmit"])) {
         header("location:http://localhost/Y1S2-Group-Project/responder.php");
     }
 
+} else if (isset($_POST["solutionupdate"])){
+    $ResponderID = $_COOKIE["ResID"];
+    $solID = $_SESSION["SolID"];
+    $solutionupdatetext = $_POST["solutionupdatetext"];
+
+    $sqlSolutionUpdate = $conn->query("UPDATE solution SET S_Body = '$solutionupdatetext' , Res_ID = $ResponderID WHERE RegT_ID = $solID");
+
+    if ($sqlSolutionUpdate === TRUE) {
+        $_SESSION["RegID"] = "";
+        $_SESSION["SolID"] = "";
+        header("location:http://localhost/Y1S2-Group-Project/responder.php");
+        
+    }
 }
 ?>

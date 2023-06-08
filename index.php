@@ -28,7 +28,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 
   <div class="header">
     <img src="assets/Cornell (1).png" alt="LOGO">
-    <h1>Welcome</h1>
+    <h1 class="element1">Welcome</h1>
   </div>
 
   <div class="common_q" id="commonQ">

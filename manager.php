@@ -19,7 +19,7 @@ if (isset($_COOKIE["ManID"])) {
 <body>
     <nav>
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Manager</p>
         </div>
         <div class="rightAlign">

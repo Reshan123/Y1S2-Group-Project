@@ -1,17 +1,11 @@
 body{
-    overflow: hidden;
+    background-image: radial-gradient( #e9fffd , #57c4ff);
+    background-size: cover;
+    color: #146C94;
 }
 
 body .askedQ{
-    background-color: #DBDFEA;
-    border-radius: 50px;
-    margin: auto;
-    margin-top: 25px;
-    width: 80%;
-    height: 70vh;
-    overflow-y: scroll;
-    padding-bottom: 50px;
-    position: relative;
+    margin-bottom: 50px;
 }
 
 body .askedQ h1{
@@ -23,48 +17,59 @@ body .askedQ h1{
 
 body .askedQ .hideReply{
     position: absolute;
-    top: 10%;
+    top: 20%;
     right: 5%; 
 }
 
-body .askedQ .ticket{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
+body .askedQ .AllTickets{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
 }
 
-body .askedQ .ticket .title{
-    margin: 20px 40px;
+body .askedQ .AllTickets .ticket{
+    display: flex;
+    flex-direction: column;
+    background-color: #DBDFEA;
+    border-radius: 50px;   
+    padding: 20px
+}
+
+body .askedQ .AllTickets .ticket:nth-child(3){
+    grid-column: 1/3;
+    grid-row: 1;
+}
+
+body .askedQ .AllTickets .ticket .title{
+    
     font-size: 2em;
     font-weight: 800;
 }
 
-body .askedQ .ticket .body{
+body .askedQ .AllTickets .ticket .body{
     text-align: justify;
-    width: 90%;
-    margin: 0px 75px;
     font-size: 1.2em;
     font-style: oblique;
     text-transform: capitalize;
 }
 
-body .askedQ .ticket .reply{
+body .askedQ .AllTickets .ticket .reply{
     display: none;
-    width: 65%;
     align-self: center;
     text-align: justify;
     font-size: 1.1em;
-    margin: 20px 0px;
+    padding: 30px;
 }
 
-body .askedQ .ticket .button{
-    width: 40%;
+body .askedQ .AllTickets .ticket .button{
     align-self: flex-end;
 }
 
 #noReply{
     border-radius: 10px;
-  
     align-self: flex-end;
     box-shadow: 0px 0px;
 }
@@ -73,6 +78,7 @@ body .askedQ .ticket .button{
 
 
 body .raiseT{
+    display: none;
     background-color: #DBDFEA;
     border-radius: 50px;
     margin: auto;

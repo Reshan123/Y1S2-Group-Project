@@ -14,7 +14,7 @@ require "DatabaseConnect.php";
 <body>
     <nav>
         <div class="leftAlign">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Registered</p>
 
         </div>
@@ -44,16 +44,17 @@ require "DatabaseConnect.php";
     </nav>
 
     <div class="askedQ" id="askedQ">
+        <h1>Raised Questions</h1>
+        <div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>
         <?php
+        echo "<div class=AllTickets>";
         // Retrieve tickets raised by the user
         $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
         if ($resultUserTickets->num_rows > 0) {
-            echo "<h1>Raised Questions</h1>";
             while ($rowTicket = $resultUserTickets->fetch_assoc()) {
                 // Check if the ticket has a reply
                 $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " . $rowTicket["RegT_ID"]);
                 if ($resultTicketReply->num_rows > 0) {
-                    echo "<div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>";
                     while ($rowReply = $resultTicketReply->fetch_assoc()) {
                         $resultResponder = $conn->query("SELECT * FROM responder WHERE Res_ID=" . $rowReply["Res_ID"]);
                         while ($rowResponder = $resultResponder->fetch_assoc()) {
@@ -75,10 +76,11 @@ require "DatabaseConnect.php";
             echo "<h1>You Have Not Raised Any Tickets</h1>";
         }
         ?>
+        </div>
     </div>
 
-    <div class="raiseT">
-        <form action="registered.php" method="post" id="raiseTForm" class="raiseTForm">
+    <div class="raiseT" id="raiseTForm">
+        <form action="registered.php" method="post"  class="raiseTForm">
             <fieldset style="border-radius:15px;">
                 <legend>Raise Ticket</legend>
                 Ticket Title : <br>

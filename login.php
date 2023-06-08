@@ -22,7 +22,7 @@ if (isset($_COOKIE["ID"])) {
     <!-- Navigation bar -->
     <nav>
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page</p>
         </div>
         <div class="rightAlign">
@@ -80,11 +80,11 @@ $password = "";
 $type = "";
 
 // Check if the login form is submitted
-    if (isset($_POST["Submit"]) && !isset($_POST["Type"])) {
-        
-        echo "<script>alert('Enter a user type');</script>";
+if (isset($_POST["Submit"]) && !isset($_POST["Type"])) {
 
-    } else if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
+    echo "<script>alert('Enter a user type');</script>";
+
+} else if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
 
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -94,7 +94,7 @@ $type = "";
         // Check if the user is unregistered
         header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
         setcookie("ID", "unreg", time() + 3600, "/");
-    }else if ($email == "" || $password == "") {
+    } else if ($email == "" || $password == "") {
         echo "<script>alert('Please fill all the fields');</script>";
     } else if ($type == "Registered") {
         // Check if the user is registered by querying the database
@@ -106,11 +106,11 @@ $type = "";
             while ($row = $result->fetch_assoc()) {
                 setcookie("ID", $row["Reg_ID"], time() + 3600, "/");
                 header('location:http://localhost/Y1S2-Group-Project/registered.php');
-            } 
+            }
 
         } else {
             echo "<script>alert('Enter valid credentials');</script>";
         }
-    } 
+    }
 }
 ?>

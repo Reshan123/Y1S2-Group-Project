@@ -1,3 +1,9 @@
+body{
+    background-image: radial-gradient( #e9fffd , #57c4ff);
+    background-size: cover;
+    color: #146C94;
+}
+
 a{
     text-decoration: none;
 }

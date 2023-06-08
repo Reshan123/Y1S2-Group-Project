@@ -21,7 +21,6 @@ function closeAllReply() {
 function showSolution(id) {
     
     let replyID = document.getElementById(id);
-    closeAllReply();
     replyID.style.display = "block";
 }
 
@@ -34,3 +33,4 @@ function goHome() {
     regTForm.style.display = "none";
     askedQ.style.display = "block";
 }
+

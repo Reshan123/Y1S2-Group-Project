@@ -9,13 +9,14 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
 <head>
     <link rel="stylesheet" href="css/unregistered.css" />
     <link rel="stylesheet" href="css/navigationBar.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>Document</title>
 </head>
 
 <body>
     <nav>
         <div class="leftAlign">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Unregistered</p>
 
         </div>
@@ -45,22 +46,22 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
 
 
     <div class="common_q">
-    <?php
-    $sqlCommonQ = "SELECT * FROM common_q";
-    $resultCommonQ = $conn->query($sqlCommonQ);
+        <?php
+        $sqlCommonQ = "SELECT * FROM common_q";
+        $resultCommonQ = $conn->query($sqlCommonQ);
 
-    // Fetch and display common questions from the database
-    while ($row = $resultCommonQ->fetch_assoc()) {
-      echo "<div class=ticket><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
+        // Fetch and display common questions from the database
+        while ($row = $resultCommonQ->fetch_assoc()) {
+            echo "<div class=ticket><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
-      // Fetch and display the responder who added the question
-      $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
-      while ($row = $resultResponderID->fetch_assoc()) {
-        echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div></div>";
-      }
-    }
-    ?>
-  </div>
+            // Fetch and display the responder who added the question
+            $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
+            while ($row = $resultResponderID->fetch_assoc()) {
+                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div></div>";
+            }
+        }
+        ?>
+    </div>
 
     <script src="js/unreg.js"></script>
 </body>

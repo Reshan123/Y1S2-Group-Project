@@ -18,7 +18,7 @@ $_SESSION["SolID"] = "";
     <!-- Navigation bar -->
     <nav>
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Staff</p>
         </div>
         <div class="rightAlign">
@@ -32,12 +32,12 @@ $_SESSION["SolID"] = "";
             <p id="logInStatus">
                 <?php
                 // Get the Responder ID from the URL.
-                if (isset($_COOKIE["ResID"])){
+                if (isset($_COOKIE["ResID"])) {
                     $ResponderID = $_COOKIE["ResID"];
                 } else {
                     header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
                 }
-                
+
                 // Retrieve the username of the Responder from the database.
                 $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
                 $resultManagerName = $conn->query($sqlManagerName);
@@ -56,15 +56,16 @@ $_SESSION["SolID"] = "";
         // Retrieve all registered tickets from the database.
         $sqlRegT = "SELECT * FROM reg_tickets";
         $resultRegT = $conn->query($sqlRegT);
+        echo "<div class=alltickets>";
         while ($row = $resultRegT->fetch_assoc()) {
             // Display each registered ticket.
             echo "<div class=" . "ticket" . "><div class=" . "title" . ">" . $row["RegT_title"] . "</div><br/><div class=" . "body" . ">" . $row["RegT_body"] . "</div><br/>";
-            $sqlReplyCheck = $conn->query("SELECT * FROM solution WHERE RegT_ID=". $row["RegT_ID"]);
-            if ($sqlReplyCheck->num_rows == 0){
-                echo "<form action=responder.php method=post><input name=regid value=".$row["RegT_ID"]."><button class=button name=reply>Reply</button></form>";
+            $sqlReplyCheck = $conn->query("SELECT * FROM solution WHERE RegT_ID=" . $row["RegT_ID"]);
+            if ($sqlReplyCheck->num_rows == 0) {
+                echo "<form action=responder.php method=post><input name=regid value=" . $row["RegT_ID"] . "><button class=button name=reply>Reply</button></form>";
             } else {
                 echo "<div class=replyAgain><button class=button>Already Replied</button>";
-                echo "<form action=responder.php method=post><input name=solutionid value=".$row["RegT_ID"]."><button class=button name=reply>Change Reply</button></form></div>";
+                echo "<form action=responder.php method=post><input name=solutionid value=" . $row["RegT_ID"] . "><button class=button name=reply>Change Reply</button></form></div>";
             }
             // Retrieve the username of the user who added the ticket.
             $resultStuID = $conn->query("SELECT * FROM registered_user WHERE Reg_ID = " . $row["Reg_ID"]);
@@ -73,8 +74,8 @@ $_SESSION["SolID"] = "";
             }
         }
 
-        if(isset($_POST["reply"])){
-            if(isset($_POST["regid"])){
+        if (isset($_POST["reply"])) {
+            if (isset($_POST["regid"])) {
                 $_SESSION["RegID"] = $_POST["regid"];
             } else if (isset($_POST["solutionid"])) {
                 $_SESSION["SolID"] = $_POST["solutionid"];
@@ -83,11 +84,13 @@ $_SESSION["SolID"] = "";
         }
         ?>
     </div>
+    </div>
 
     <!-- Unregistered Tickets -->
     <div class="unreg_tickets" id="unreg_tickets">
         <h1>Unregistered Tickets</h1>
         <?php
+        echo "<div class=alltickets>";
         // Retrieve all unregistered tickets from the database.
         $sqlRegT = "SELECT * FROM unreg_tickets";
         $resultRegT = $conn->query($sqlRegT);
@@ -98,23 +101,25 @@ $_SESSION["SolID"] = "";
         }
         ?>
     </div>
+    </div>
 
     <!-- Common Questions -->
     <div class="common_q" id="commonQ">
-        <h1>Common Questions</h1>
         <?php
         $sqlCommonQ = "SELECT * FROM common_q";
         $resultCommonQ = $conn->query($sqlCommonQ);
-        while ($row = $resultCommonQ->fetch_assoc()) {
-            echo "<div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
 
+        // Fetch and display common questions from the database
+        while ($row = $resultCommonQ->fetch_assoc()) {
+            echo "<div class=ticket><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";
+
+            // Fetch and display the responder who added the question
             $resultResponderID = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $row["Res_ID"]);
             while ($row = $resultResponderID->fetch_assoc()) {
-                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div>";
+                echo "<div class=" . "addedBy" . ">Added by :- " . $row["Res_username"] . "</div></div>";
             }
         }
         ?>
-        <p class="button">Add common questions</p>  
     </div>
 
     <?php

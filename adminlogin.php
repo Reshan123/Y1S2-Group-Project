@@ -6,17 +6,19 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 <!-- HTML code for the login form and other elements -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navigationBar.css">
 </head>
+
 <body>
     <!-- Navigation bar -->
     <nav>
         <!-- Left-aligned logo and text -->
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page</p>
         </div>
         <!-- Right-aligned profile picture and login status -->
@@ -61,6 +63,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
     <script src="js/adminlogin.js"></script> <!-- Include JavaScript file for admin login form -->
 
 </body>
+
 </html>
 
 <?php
@@ -84,7 +87,7 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
         // If the manager exists, redirect to the manager page with the manager ID
         while ($row = $result->fetch_assoc()) {
             header("location:http://localhost/Y1S2-Group-Project/manager.php");
-            setcookie("ManID",  $row["Man_ID"], time() + 3600, "/"); // Set a cookie with the manager ID
+            setcookie("ManID", $row["Man_ID"], time() + 3600, "/"); // Set a cookie with the manager ID
         }
     } else if ($type == "Staff") {
         // Query the database to check if the staff member exists

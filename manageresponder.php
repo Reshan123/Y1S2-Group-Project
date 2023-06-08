@@ -19,7 +19,7 @@ if (isset($_COOKIE["ManID"])) {
 <body>
     <nav>
         <div class="leftAlign" id="supportLogo">
-            <img src="assets/logo.png" alt="LOGO" />
+            <img src="assets/cornell (1).png" alt="LOGO" />
             <p>Support Page > Manager</p>
         </div>
         <div class="rightAlign">
@@ -46,7 +46,7 @@ if (isset($_COOKIE["ManID"])) {
         if (isset($_GET["UpdateID"])) {
 
             $updateID = $_GET["UpdateID"];
-            setcookie("updateID",$updateID,time()+3600,"/");
+            setcookie("updateID", $updateID, time() + 3600, "/");
 
             $resultResponderDetails = $conn->query("SELECT * FROM responder WHERE Res_ID = " . $updateID);
 
@@ -54,23 +54,23 @@ if (isset($_COOKIE["ManID"])) {
                 echo "<fieldset>
                         <legend>Update responder</legend>
                         <form action=manageresponder.php method=post>
-                            <p>Name</p>  <input type=text name=name id=name value=".$row["Res_username"]."><br>
-                            <p>Email</p>  <input type=text name=email id=email value=".$row["Res_email"]."><br>
-                            <p>Password</p>  <input type=text name=pwd id=pwd value=".$row["Res_password"]."><br>
+                            <p>Name</p>  <input type=text name=name id=name value=" . $row["Res_username"] . "><br>
+                            <p>Email</p>  <input type=text name=email id=email value=" . $row["Res_email"] . "><br>
+                            <p>Password</p>  <input type=text name=pwd id=pwd value=" . $row["Res_password"] . "><br>
                             <button class=button name=update>Update</button>
                         </form>
                     </fieldset>";
             }
-        } else if(isset($_GET["DeleteID"])){
+        } else if (isset($_GET["DeleteID"])) {
 
             $deleteID = $_GET["DeleteID"];
-            $resultDelete = $conn->query("DELETE FROM responder WHERE Res_ID=".$deleteID);
+            $resultDelete = $conn->query("DELETE FROM responder WHERE Res_ID=" . $deleteID);
 
-            if($resultDelete){
+            if ($resultDelete) {
                 header("Location:http://localhost/Y1S2-Group-Project/manager.php");
             }
 
-        }else {
+        } else {
             echo "<fieldset>
                         <legend>Add responder</legend>
                         <form action=manageresponder.php method=post>
@@ -83,7 +83,7 @@ if (isset($_COOKIE["ManID"])) {
         }
 
 
-        if (isset($_POST["update"])){
+        if (isset($_POST["update"])) {
             $name = $_POST["name"];
             $email = $_POST["email"];
             $pwd = $_POST["pwd"];
@@ -91,12 +91,12 @@ if (isset($_COOKIE["ManID"])) {
 
             $resultUpdateRecord = $conn->query("UPDATE responder SET Res_username='$name' , Res_email='$email' , Res_password='$pwd' WHERE Res_ID=$updateCookie");
 
-            if ($resultUpdateRecord){
+            if ($resultUpdateRecord) {
                 header("Location:http://localhost/Y1S2-Group-Project/manager.php");
             }
         }
 
-        if(isset($_POST["add"])){
+        if (isset($_POST["add"])) {
             $nameAdd = $_POST["nameAdd"];
             $emailAdd = $_POST["emailAdd"];
             $pwdAdd = $_POST["pwdAdd"];
@@ -104,15 +104,15 @@ if (isset($_COOKIE["ManID"])) {
             $IDAdd = 0;
             $resultHighestID = $conn->query("SELECT * FROM responder");
 
-            while($row = $resultHighestID->fetch_assoc()){
-                if ($IDAdd < $row["Res_ID"]){
+            while ($row = $resultHighestID->fetch_assoc()) {
+                if ($IDAdd < $row["Res_ID"]) {
                     $IDAdd = $row["Res_ID"];
                 }
             }
             $IDAdd++;
 
             $resultInsert = $conn->query("INSERT INTO responder(Res_ID,Res_username,Res_email,Res_password,Man_ID) VALUES ($IDAdd,'$nameAdd','$emailAdd','$pwdAdd',$managerID)");
-            if ($resultInsert){
+            if ($resultInsert) {
                 header("Location:http://localhost/Y1S2-Group-Project/manager.php");
             }
         }
@@ -121,12 +121,12 @@ if (isset($_COOKIE["ManID"])) {
 
     </div>
 
-<script>
-    function goHome() {
-        document.location = "http://localhost/Y1S2-Group-Project/manager.php";
-        document.cookie = "updateCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
-</script>
+    <script>
+        function goHome() {
+            document.location = "http://localhost/Y1S2-Group-Project/manager.php";
+            document.cookie = "updateCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    </script>
 
 </body>
 
