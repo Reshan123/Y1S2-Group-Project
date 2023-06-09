@@ -1,0 +1,49 @@
+body nav{
+    z-index: 4;
+    background-color: #f6fefb;
+    position: sticky;
+    top: 5px;
+    border-radius: 15px;
+    color: #020d09;
+
+    display: grid;
+    grid-template-columns: repeat(9 , 1fr);
+}
+
+body nav img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+}
+
+body nav .logo{
+    width: 150px;
+}
+
+body nav .supportTxt{
+    font-size: 1.5em;
+    align-self: center;
+    justify-self: start;
+}
+
+body nav .profileIcon{
+    grid-column: 8;
+    justify-self: end;
+}
+
+body nav .logInStatus{
+    grid-column: 9;
+    align-self: center;
+    justify-self: start;
+}
+
+body nav .logout{
+    display: none;
+    background-color: #f6fefb;
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: -20px;
+    cursor: pointer;
+}
+

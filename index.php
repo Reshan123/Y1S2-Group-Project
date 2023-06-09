@@ -6,14 +6,15 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 
 <head>
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/navigationBar.css" />
+  <!-- <link rel="stylesheet" href="css/navigationBar.css" /> -->
+  <link rel="stylesheet" href="css/navbarOnprogress.css" />
   <title>Document</title>
 </head>
 
 <body>
 
+  <!-- Navigation bar -->
   <nav>
-    <!-- Navigation bar -->
     <img src="assets/cornell.png" alt="LOGO" class="logo" />
     <p class="supportTxt">Support Page</p>
     <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
