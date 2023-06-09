@@ -84,7 +84,7 @@ $_SESSION["SolID"] = "";
         }
         ?>
     </div>
-    </div>
+    
 
     <!-- Unregistered Tickets -->
     <div class="unreg_tickets" id="unreg_tickets">
@@ -100,7 +100,6 @@ $_SESSION["SolID"] = "";
             echo "<div class=" . "addedBy" . ">Added by :- " . $row["UnregT_pemail"] . "</div></div>";
         }
         ?>
-    </div>
     </div>
 
     <!-- Common Questions -->
