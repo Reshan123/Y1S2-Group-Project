@@ -1,0 +1,33 @@
+body{
+    overflow: hidden;
+    background-image: radial-gradient( #e9fffd , #57c4ff);
+    background-size: cover;
+    color: #146C94;
+}
+
+.form{
+    width: 50vw;    
+    background: #DBDFEA;
+    padding: 50px 100px;
+    border-radius: 20px;
+}
+
+fieldset{
+    border-radius: 15px;
+}
+
+.form .addcommonqform{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.form .button{
+    transform: translateX(400%);
+    width: 10%;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    padding: 7px 15px;
+}
