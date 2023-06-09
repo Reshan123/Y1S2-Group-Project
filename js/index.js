@@ -1,6 +1,3 @@
-let profilePic =  document.getElementById("profilePic").addEventListener("click", changePage);
-let logInStatus = document.getElementById("logInStatus").addEventListener("click", changePage);
-let supportLogo = document.getElementById("supportLogo").addEventListener("click", goToHome);
 let commonQ =  document.getElementById("commonQ");
 
 function changePage () {

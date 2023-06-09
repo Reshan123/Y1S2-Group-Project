@@ -14,16 +14,10 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 
   <nav>
     <!-- Navigation bar -->
-    <div class="leftAlign" id="supportLogo">
-      <img src="assets/cornell.png" alt="LOGO" />
-      <p>Support Page</p>
-    </div>
-    <div class="rightAlign">
-      <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-        <img src="assets/profileicon.png" alt="profile icon" />
-      </div>
-      <p class="logInStatus" id="logInStatus">Not Logged In</p>
-    </div>
+    <img src="assets/cornell.png" alt="LOGO" class="logo" />
+    <p class="supportTxt">Support Page</p>
+    <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
+    <p class="logInStatus" id="logInStatus">Not Logged In</p>
   </nav>
 
   <div class="header">
@@ -51,10 +45,10 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 
   <div class="footer">
     <div class="container">
-    <p class="help">Do you need any help?</p>
+      <p class="help">Do you need any help?</p>
       <div class="contact">
-        <div><img src="assets/telephone.png" alt="" height="15px" width="15px"> +44 79 7351 4535 <br><img
-            src="assets/mail.png" alt="" height="15px" width="15px"> admin@cornell.com</div>
+        <div><img src="assets/telephone.png" alt="" height="15px" width="15px"> &nbsp;+44 79 7351 4535 <br><img
+            src="assets/mail.png" alt="" height="15px" width="15px"> &nbsp; admin@cornell.com</div>
       </div>
       <div class="socails">
         <img src="assets/facebook.png" alt="">
