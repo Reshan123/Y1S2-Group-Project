@@ -12,32 +12,29 @@ if (isset($_COOKIE["ManID"])) {
 
 <head>
     <link rel="stylesheet" href="css/manageresponder.css" />
-    <link rel="stylesheet" href="css/navigationBar.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>Document</title>
 </head>
 
 <body>
     <nav>
-        <div class="leftAlign" id="supportLogo">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Manager</p>
-        </div>
-        <div class="rightAlign">
-            <p class="button" onclick="goHome()">Home</p>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">
-                <?php
-                $sqlManagerName = "SELECT * FROM manager WHERE Man_ID='$managerID'";
-                $resultManagerName = $conn->query($sqlManagerName);
-                while ($row = $resultManagerName->fetch_assoc()) {
-                    echo $row["Man_username"];
-                }
-                ?>
-            </p>
-        </div>
+
+        <img src="assets/cornell.png" alt="LOGO" class="logo" />
+        <p class="supportTxt">Admin Panel</p>
+        <p class="button" onclick="goHome()">Home</p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
+        <button class="logout" onclick="logout()">Logout</button>
+
+        <p id="logInStatus" class="logInStatus">
+            <?php
+            $sqlManagerName = "SELECT * FROM manager WHERE Man_ID='$managerID'";
+            $resultManagerName = $conn->query($sqlManagerName);
+            while ($row = $resultManagerName->fetch_assoc()) {
+                echo $row["Man_username"];
+            }
+            ?>
+        </p>
+
     </nav>
 
 

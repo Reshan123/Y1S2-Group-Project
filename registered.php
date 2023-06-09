@@ -7,39 +7,33 @@ require "DatabaseConnect.php";
 
 <head>
     <link rel="stylesheet" href="css/registered.css" />
-    <link rel="stylesheet" href="css/navigationBar.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
     <title>Document</title>
 </head>
 
 <body>
     <nav>
-        <div class="leftAlign">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Registered</p>
-
-        </div>
-        <div class="rightAlign">
-            <p class="button" onclick="goHome()">Home</p>
-            <p class="button" onclick="showRaiseT()">Raise Ticket</p>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">
-                <?php
-                // Get the User ID from the URL.
-                if (isset($_COOKIE["ID"])) {
-                    $RegID = $_COOKIE["ID"];
-                } else {
-                    header("location:http://localhost/Y1S2-Group-Project/login.php");
-                }
-                // Retrieve the username of the User from the database.
-                $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
-                while ($row = $resultUsersName->fetch_assoc()) {
-                    echo $row["Reg_username"];
-                }
-                ?>
-            </p>
+        <img src="assets/cornell.png" alt="LOGO" class="logo"/>
+        <p class="supportTxt">Support Page</p>
+        <p class="button" onclick="goHome()">Home</p>
+        <p class="button" onclick="showRaiseT()">Raise Ticket</p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
+        <button class="logout" onclick="logout()">Logout</button>
+        <p id="logInStatus" class="logInStatus">
+            <?php
+            // Get the User ID from the URL.
+            if (isset($_COOKIE["ID"])) {
+                $RegID = $_COOKIE["ID"];
+            } else {
+                header("location:http://localhost/Y1S2-Group-Project/login.php");
+            }
+            // Retrieve the username of the User from the database.
+            $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
+            while ($row = $resultUsersName->fetch_assoc()) {
+                echo $row["Reg_username"];
+            }
+            ?>
+        </p>
         </div>
     </nav>
 
@@ -76,11 +70,11 @@ require "DatabaseConnect.php";
             echo "<h1>You Have Not Raised Any Tickets</h1>";
         }
         ?>
-        </div>
+    </div>
     </div>
 
     <div class="raiseT" id="raiseTForm">
-        <form action="registered.php" method="post"  class="raiseTForm">
+        <form action="registered.php" method="post" class="raiseTForm">
             <fieldset style="border-radius:15px;">
                 <legend>Raise Ticket</legend>
                 Ticket Title : <br>

@@ -35,15 +35,49 @@ body nav .logInStatus{
     grid-column: 9;
     align-self: center;
     justify-self: start;
+    font-weight: 600;
+    font-size: 1.3em;
+    text-transform: capitalize;
 }
 
 body nav .logout{
-    display: none;
+    visibility: hidden;
     background-color: #f6fefb;
     border-radius: 10px;
     padding: 5px 10px;
-    position: absolute;
-    bottom: -20px;
+
     cursor: pointer;
+
+
+    position: absolute;
+    right: 190px;
+    bottom: -25px;
 }
 
+body nav .profileIcon:hover + .logout{
+    visibility: visible !important; 
+}
+
+.logout:hover{
+    visibility: visible !important;
+}
+
+.button{
+    border: 2px solid #430f62;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    box-shadow: 2px 2px;
+    cursor: pointer;
+    color: #430f62;
+    background-color: #39486700;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.button:active{
+    box-shadow: 1px 1px;
+}

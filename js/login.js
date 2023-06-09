@@ -8,10 +8,6 @@ let RegisteredText = document
   .getElementById("RegisteredText")
   .addEventListener("click", RegisteredSelect);
 
-let supportLogo = document
-  .getElementById("supportLogo")
-  .addEventListener("click", Gotohome);
-
 let emailInput = document.getElementById("emailInput");
 let PwdInput = document.getElementById("PwdInput");
 

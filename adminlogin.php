@@ -10,24 +10,16 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 <head>
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/navigationBar.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 
 <body>
     <!-- Navigation bar -->
     <nav>
-        <!-- Left-aligned logo and text -->
-        <div class="leftAlign" id="supportLogo">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page</p>
-        </div>
-        <!-- Right-aligned profile picture and login status -->
-        <div class="rightAlign">
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-            </div>
-            <p class="logInStatus" id="logInStatus">Not Logged In</p>
-        </div>
+        <img src="assets/cornell.png" alt="LOGO" class="logo"/>
+        <p class="supportTxt">Admin Panel</p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
+        <p class="logInStatus" id="logInStatus">Not Logged In</p>
     </nav>
 
     <center style="padding:50px 0px;">
