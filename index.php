@@ -15,7 +15,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
   <nav>
     <!-- Navigation bar -->
     <div class="leftAlign" id="supportLogo">
-      <img src="assets/cornell (1).png" alt="LOGO" />
+      <img src="assets/cornell.png" alt="LOGO" />
       <p>Support Page</p>
     </div>
     <div class="rightAlign">
@@ -50,7 +50,21 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
   </div>
 
   <div class="footer">
-    <p>coppyright &copy All rights resevered</p>
+    <div class="container">
+      <div class="contact">
+        <p>Do you need any help?</p>
+        <div><img src="assets/telephone.png" alt="" height="15px" width="15px"> +44 79 7351 4535 <br><img
+            src="assets/mail.png" alt="" height="15px" width="15px"> admin@cornell.com</div>
+      </div>
+      <div class="socails">
+        <img src="assets/facebook.png" alt="">
+        <img src="assets/twitter.png" alt="">
+        <img src="assets/instagram.png" alt="">
+      </div>
+      <div class="copyright">
+        <p>coppyright &copy All rights resevered</p>
+      </div>
+    </div>
   </div>
 
   <script src="js/index.js"></script> <!-- Include JavaScript file for additional functionality -->

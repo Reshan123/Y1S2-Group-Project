@@ -3,31 +3,35 @@ body nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #DBDFEA;
+    background-color: #f6fefb;
     position: sticky;
     top: 5px;
     border-radius: 15px;
-    color: #0A4D68;
+    color: #020d09;
 }
 
 body nav div{
     display: flex;
     align-items: center;
     cursor: pointer;
-}
-
-body nav .rightAlign {
-    margin-right: 50px;
+    gap: 15px;
 }
 
 body nav .leftAlign img{
-    width: 120px;
+    width: 100px;
     height: 100px;
+    display: block;
+    border-radius: 15px;
 }
 
 body nav .leftAlign p{
     font-size: 2em;
     font-weight: 800;
+}
+
+
+body nav .rightAlign {
+    margin-right: 50px;
 }
 
 body nav .rightAlign .profileImage {
@@ -49,7 +53,7 @@ body nav .rightAlign .logInStatus {
 
 body nav .rightAlign .profileImage .logout{
     display: none;
-    background-color: beige;
+    background-color: #f6fefb;
     border-radius: 10px;
     padding: 5px 10px;
     position: absolute;
@@ -62,13 +66,13 @@ body nav .rightAlign .profileImage:hover .logout{
 }
 
 .button{
-    border: 2px solid rgb(38, 95, 144);
+    border: 2px solid #430f62;
     border-radius: 5px;
     padding: 5px 10px;
     margin-right: 15px;
     box-shadow: 2px 2px;
     cursor: pointer;
-    color: rgb(38, 95, 144);
+    color: #430f62;
     background-color: #39486700;
     
 }

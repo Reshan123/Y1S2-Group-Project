@@ -87,7 +87,7 @@ body .registered_tickets .alltickets .ticket{
 }
 
 body .registered_tickets .alltickets .ticket:hover{
-    background-color: #2b9cff;
+    background-color: #79b0e0;
 }
 
 body .registered_tickets .alltickets .ticket:nth-child(1){
@@ -180,9 +180,8 @@ body .unreg_tickets .alltickets .ticket:hover{
     background-color: #79b0e0;
 }
 
-body .unreg_tickets .alltickets .ticket:nth-child(3){
-    grid-row: 1/3;
-    grid-column: 2;
+body .unreg_tickets .alltickets .ticket:last-child{
+    grid-column: 1/3;
 }
 
 body .unreg_tickets .alltickets .ticket .title{
