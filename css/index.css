@@ -145,33 +145,25 @@ body .footer .container{
     /* border: black solid 1px; */
     width: 100%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 body .footer .container .contact{
     /* border: black solid 1px; */
-    grid-row: 1;
-    width: 60%;
-    display:grid;
-    grid-template-columns: 2fr 1fr;
+    grid-row: 2;
 }
 
-body .footer .container .contact p{
-    justify-self: end;
-    grid-row: 1/3;
+body .footer .container .help{
     font-size: 2.5em;
     font-family: 'Anton', sans-serif;
-}
-
-body .footer .container .contact div{
-    justify-self: end;
-    grid-row: 3;
+    grid-column: 2;
+    justify-self: center;
 }
 
 body .footer .container .copyright{
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 2;
-    justify-self: end;
+    justify-self: center;
 }
 
 body .footer .container .socails{

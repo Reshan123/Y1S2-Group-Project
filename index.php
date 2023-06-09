@@ -51,8 +51,8 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 
   <div class="footer">
     <div class="container">
+    <p class="help">Do you need any help?</p>
       <div class="contact">
-        <p>Do you need any help?</p>
         <div><img src="assets/telephone.png" alt="" height="15px" width="15px"> +44 79 7351 4535 <br><img
             src="assets/mail.png" alt="" height="15px" width="15px"> admin@cornell.com</div>
       </div>
