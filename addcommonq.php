@@ -3,7 +3,7 @@
     //establish connection 
     $ayacon=mysqli_connect("localhost","root","","supportdesk");
     $title = $category = $body = ''; //variables
-    $errors array('title'=>'', 'body'=>'');
+    $error =  array('title'=>'', 'body'=>'');
      
 
     
@@ -27,7 +27,7 @@
     //checking if ingredient field is empty 
         if(empty($_POST['body']))
         {
-            $errors['body'] = 'please provide an ingredients'."<br/>";
+            $errors['body'] = 'please provide an body'."<br/>";
         }
         else 
         {
