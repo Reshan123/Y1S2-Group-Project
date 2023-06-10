@@ -9,7 +9,7 @@ function logout() {
 }
 
 function showCommonQ() {
-    commonQ.style.display = "grid";
+    commonQ.style.display = "block";
     registered_tickets.style.display = "none";
     unreg_tickets.style.display = "none";
 }
@@ -22,7 +22,7 @@ function showUnregTickets() {
 
 function showRegTickets() {
     commonQ.style.display = "none";
-    registered_tickets.style.display = "grid";
+    registered_tickets.style.display = "block";
     unreg_tickets.style.display = "none";
 }
 

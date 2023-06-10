@@ -9,7 +9,7 @@ $_SESSION["SolID"] = "";
 
 <head>
     <link rel="stylesheet" href="css/responder.css" />
-    <link rel="stylesheet" href="css/navigationBar.css">
+    <link rel="stylesheet" href="css/navbar.css" />
     <title>Document</title>
 </head>
 
@@ -17,38 +17,35 @@ $_SESSION["SolID"] = "";
 
     <!-- Navigation bar -->
     <nav>
-        <div class="leftAlign" id="supportLogo">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Staff</p>
-        </div>
-        <div class="rightAlign">
-            <p class="button" onclick="showRegTickets()">Registered Tickets</p>
-            <p class="button" onclick="showUnregTickets()">Unregistered Tickets</p>
-            <p class="button" onclick="showCommonQ()">Common Questions</p>
-            <a href="addcommonq.php">
+        <img src="assets/cornell.png" alt="LOGO" class="logo" />
+        <p class="supportTxt">Admin Panel</p>
+        <p class="button" onclick="showRegTickets()">Registered Tickets</p>
+        <p class="button" onclick="showUnregTickets()">Unregistered Tickets</p>
+        <p class="button" onclick="showCommonQ()">Common Questions</p>
+        <a href="addcommonq.php">
             <p class="button" onlclick="showAddCommonQ()">Add Common Questions</p>
-            </a>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">
-                <?php
-                // Get the Responder ID from the URL.
-                if (isset($_COOKIE["ResID"])) {
-                    $ResponderID = $_COOKIE["ResID"];
-                } else {
-                    header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
-                }
+        </a>
 
-                // Retrieve the username of the Responder from the database.
-                $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
-                $resultManagerName = $conn->query($sqlManagerName);
-                while ($row = $resultManagerName->fetch_assoc()) {
-                    echo $row["Res_username"];
-                }
-                ?>
-            </p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
+        <button class="logout" onclick="logout()">Logout</button>
+
+        <p id="logInStatus" class="logInStatus">
+            <?php
+            // Get the Responder ID from the URL.
+            if (isset($_COOKIE["ResID"])) {
+                $ResponderID = $_COOKIE["ResID"];
+            } else {
+                header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
+            }
+
+            // Retrieve the username of the Responder from the database.
+            $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
+            $resultManagerName = $conn->query($sqlManagerName);
+            while ($row = $resultManagerName->fetch_assoc()) {
+                echo $row["Res_username"];
+            }
+            ?>
+        </p>
         </div>
     </nav>
 
@@ -87,7 +84,8 @@ $_SESSION["SolID"] = "";
         }
         ?>
     </div>
-    
+    </div>
+
 
     <!-- Unregistered Tickets -->
     <div class="unreg_tickets" id="unreg_tickets">
@@ -104,13 +102,14 @@ $_SESSION["SolID"] = "";
         }
         ?>
     </div>
-
+    </div>
     <!-- Common Questions -->
     <div class="common_q" id="commonQ">
+        <h1>Common Questions</h1>
         <?php
         $sqlCommonQ = "SELECT * FROM common_q";
         $resultCommonQ = $conn->query($sqlCommonQ);
-
+        echo "<div class=alltickets>";
         // Fetch and display common questions from the database
         while ($row = $resultCommonQ->fetch_assoc()) {
             echo "<div class=ticket><div class=" . "title" . ">" . $row["CQ_title"] . "</div><br/><div class=" . "body" . ">" . $row["CQ_body"] . "</div><br/>";

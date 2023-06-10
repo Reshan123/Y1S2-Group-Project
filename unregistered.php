@@ -8,27 +8,20 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
 
 <head>
     <link rel="stylesheet" href="css/unregistered.css" />
-    <link rel="stylesheet" href="css/navigationBar.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>Document</title>
 </head>
 
 <body>
     <nav>
-        <div class="leftAlign">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Unregistered</p>
-
-        </div>
-        <div class="rightAlign">
-            <p class="button" onclick="showCommonQ()">Common Questions</p>
-            <p class="button" onclick="showRaiseT()">Raise Ticket</p>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" value="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">Unregistered User</p>
-        </div>
+        <img src="assets/cornell.png" alt="LOGO" class="logo"/>
+        <p class="supportTxt">Support Page</p>
+        <p class="button" onclick="showCommonQ()">Common Questions</p>
+        <p class="button" onclick="showRaiseT()">Raise Ticket</p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
+        <button class="logout" value="logout" onclick="logout()">Logout</button>
+        <p id="logInStatus" class="logInStatus">Unregistered User</p>
     </nav>
 
     <form action="unregistered.php" method="post" id="raiseTForm" class="raiseTForm">

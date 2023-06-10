@@ -10,42 +10,50 @@ body .common_q{
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+body .common_q h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
+}
+body .common_q .alltickets{
+    display: grid;
     gap: 30px;
     grid-template-columns: 1fr 2fr;
     user-select: none;
     -webkit-user-drag: none;
 }
-
-body .common_q .ticket{
+body .common_q .alltickets .ticket{
     background-color: #B0DAFF;
     border-radius: 15px;
     padding: 15px 10px;
 }
 
-body .common_q .ticket:hover{
+body .common_q .alltickets .ticket:hover{
     background-color: #4a90ce;
 }
 
-body .common_q .ticket:nth-child(3){
+body .common_q .alltickets .ticket:nth-child(3){
     grid-column: span 2;
 }
 
-body .common_q .ticket:nth-child(4){
+body .common_q .alltickets .ticket:nth-child(4){
     grid-row: 1/3;
 }
-body .common_q .ticket .title{
+body .common_q .alltickets .ticket .title{
     font-size: 2em;
     font-weight: 800;
 }
 
-body .common_q .ticket .body{
+body .common_q .alltickets .ticket .body{
     text-align: justify;
     font-size: 1.2em;
     font-style: oblique;
     text-transform: capitalize;
 }
 
-body .common_q .ticket .addedBy{
+body .common_q .alltickets .ticket .addedBy{
     text-align: right;
 }
 
@@ -181,7 +189,8 @@ body .unreg_tickets .alltickets .ticket:hover{
 }
 
 body .unreg_tickets .alltickets .ticket:last-child{
-    grid-column: 1/3;
+    grid-row: 1/3;
+    align-self: stretch;
 }
 
 body .unreg_tickets .alltickets .ticket .title{

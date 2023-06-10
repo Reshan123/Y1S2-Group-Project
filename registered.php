@@ -7,39 +7,63 @@ require "DatabaseConnect.php";
 
 <head>
     <link rel="stylesheet" href="css/registered.css" />
-    <link rel="stylesheet" href="css/navigationBar.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
     <title>Document</title>
 </head>
 
 <body>
     <nav>
-        <div class="leftAlign">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Registered</p>
+        <img src="assets/cornell.png" alt="LOGO" class="logo" />
+        <p class="supportTxt">Support Page</p>
+        <p class="button" onclick="goHome()">Home</p>
+        <p class="button" onclick="showRaiseT()">Raise Ticket</p>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
+        <button class="logout" onclick="logout()">Logout</button>
+        <p id="logInStatus" class="logInStatus">
+            <?php
+            // Get the User ID from the URL.
+            if (isset($_COOKIE["ID"])) {
+                $RegID = $_COOKIE["ID"];
+            } else {
+                header("location:http://localhost/Y1S2-Group-Project/login.php");
+            }
+            // Retrieve the username of the User from the database.
+            $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
+            while ($row = $resultUsersName->fetch_assoc()) {
+                echo $row["Reg_username"];
+            }
 
-        </div>
-        <div class="rightAlign">
-            <p class="button" onclick="goHome()">Home</p>
-            <p class="button" onclick="showRaiseT()">Raise Ticket</p>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">
-                <?php
-                // Get the User ID from the URL.
-                if (isset($_COOKIE["ID"])) {
-                    $RegID = $_COOKIE["ID"];
-                } else {
-                    header("location:http://localhost/Y1S2-Group-Project/login.php");
+            if (isset($_POST["Submit"])) {
+                $T_title = $_POST["T_title"];
+                $category = $_POST["category"];
+                $T_body = $_POST["T_body"];
+                $t_ID = 0;
+                $RegID = $_COOKIE["ID"];
+
+                $resultGetID = $conn->query("SELECT * FROM reg_tickets");
+                while ($rowGetID = $resultGetID->fetch_assoc()) {
+                    if ($t_ID < $rowGetID["RegT_ID"]) {
+                        $t_ID = $rowGetID["RegT_ID"];
+                    }
                 }
-                // Retrieve the username of the User from the database.
-                $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
-                while ($row = $resultUsersName->fetch_assoc()) {
-                    echo $row["Reg_username"];
+                $t_ID++;
+
+                $resultInsertRegT = $conn->query("INSERT INTO reg_tickets (RegT_ID,RegT_category,RegT_title,RegT_body,Reg_ID) VALUE ($t_ID,'$category','$T_title','$T_body',$RegID)");
+
+                if ($resultInsertRegT) {
+                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
                 }
-                ?>
-            </p>
+            }
+
+            if (isset($_POST["deleteT"])) {
+                $TID = $_POST["deleteT"];
+                $resultDeleteRegT = $conn->query("DELETE FROM reg_tickets WHERE RegT_ID = $TID");
+                if ($resultDeleteRegT) {
+                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
+                }
+            }
+            ?>
+        </p>
         </div>
     </nav>
 
@@ -68,7 +92,8 @@ require "DatabaseConnect.php";
                 } else {
                     echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                     echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
-                    echo "<button class=button id=noReply>Not Replied Yet</button>";
+                    echo "<div class=buttons><button class=button id=inActive>Not Replied Yet</button>";
+                    echo "<form action=registered.php method=post><button class=button id=colorRed name=deleteT value=" . $rowTicket["RegT_ID"] . ">Delete Ticket</button></form></div>";
                     echo "</div>";
                 }
             }
@@ -76,11 +101,11 @@ require "DatabaseConnect.php";
             echo "<h1>You Have Not Raised Any Tickets</h1>";
         }
         ?>
-        </div>
+    </div>
     </div>
 
     <div class="raiseT" id="raiseTForm">
-        <form action="registered.php" method="post"  class="raiseTForm">
+        <form action="registered.php" method="post" class="raiseTForm">
             <fieldset style="border-radius:15px;">
                 <legend>Raise Ticket</legend>
                 Ticket Title : <br>
