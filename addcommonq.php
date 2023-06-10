@@ -31,7 +31,7 @@
         }
         else 
         {
-            $ingredients = $_POST['body'];
+            $body = $_POST['body'];
             
         }
        
