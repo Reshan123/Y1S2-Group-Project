@@ -36,42 +36,34 @@
 <html>
     <head>
     <link rel="stylesheet" href="css/addcommonq.css" />
-    <link rel="stylesheet" href="css/navigationBar.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
     </head>
 <body>	
 
 <!-- navigation bar -->
     <nav>
-        <div class="leftAlign" id="supportLogo">
-            <img src="assets/cornell (1).png" alt="LOGO" />
-            <p>Support Page > Staff</p>
-        </div>
-        <div class="rightAlign">
-            <a href = "index.php">
-            <p class="button">Home</p>
-            </a>
-            <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
-                <img src="assets/profileicon.png" alt="profile icon" />
-                <button class="logout" onclick="logout()">Logout</button>
-            </div>
-            <p id="logInStatus">
-                <?php
-                // Get the Responder ID from the URL.
-                if (isset($_COOKIE["ResID"])) {
-                    $ResponderID = $_COOKIE["ResID"];
-                } else {
-                    header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
-                }
+        <img src="assets/cornell.png" alt="LOGO" class="logo"/>
+        <p class="supportTxt">Admin Panel</p>
+        <a href = "responder.php"><p class="button">Home</p></a>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
+        <button class="logout" onclick="logout()">Logout</button>    
+        <p id="logInStatus" class="logInStatus">
+            <?php
+            // Get the Responder ID from the URL.
+            if (isset($_COOKIE["ResID"])) {
+                $ResponderID = $_COOKIE["ResID"];
+            } else {
+                header("location:http://localhost/Y1S2-Group-Project/adminlogin.php");
+            }
 
-                // Retrieve the username of the Responder from the database.
-                $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
-                $resultManagerName = $conn->query($sqlManagerName);
-                while ($row = $resultManagerName->fetch_assoc()) {
-                    echo $row["Res_username"];
-                }
-                ?>
-            </p>
-        </div>
+            // Retrieve the username of the Responder from the database.
+            $sqlManagerName = "SELECT * FROM responder WHERE Res_ID='$ResponderID'";
+            $resultManagerName = $conn->query($sqlManagerName);
+            while ($row = $resultManagerName->fetch_assoc()) {
+                echo $row["Res_username"];
+            }
+            ?>
+        </p>
     </nav>
 <!-- navigation bar -->
 
