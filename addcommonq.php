@@ -3,66 +3,7 @@
     //establish connection 
     $ayacon=mysqli_connect("localhost","root","","supportdesk");
     $title = $category = $body = ''; //variables
-    $error =  array('title'=>'', 'body'=>'');
-     
-
-    
-    
-    if (isset($_POST["Submit"])) 
-    {
-        $title = $_POST["title"];
-        $category= $_POST["category"];
-        $body = $_POST["body"];
-
-            
-        if(empty($_POST['title']))
-        {
-            $errors['title'] ='please provide an title'."<br/>";
-        }
-        else 
-        {   $title = $_POST['title'];
-           
-        }
-    
-    //checking if ingredient field is empty 
-        if(empty($_POST['body']))
-        {
-            $errors['body'] = 'please provide an body'."<br/>";
-        }
-        else 
-        {
-            $body = $_POST['body'];
-            
-        }
-       
-       
-
-      
-        if(array_filter($errors))
-        {
-
-        }
-        else
-        {
-            $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$body', '$category')"; //inserting data in to the database
-
-        }
-        $query_run = mysqli_query($ayacon, $sql); // running the query 
-
-        if($query_run) //if query is runnign successfully 
-        {
-            echo "Added Successfully";
-            header("Location: addcommonq.php");
-        }
-        {
-            echo "Not added Successfully". mysqli_error($ayacon);
-            
-        }
-    }
-    
-    
-    
-
+    $errors =  array('title'=>'', 'body'=>'');
 ?>
 
 
@@ -150,3 +91,62 @@
 
 </body>
 </html>
+
+<?php
+    if (isset($_POST["Submit"])) 
+    {
+        $title = $_POST["title"];
+        $category= $_POST["category"];
+        $body = $_POST["body"];
+        $CQID = 0;
+
+        $sqlToGetID = "SELECT * FROM common_q";
+
+
+            
+        if(empty($_POST['title']))
+        {
+            $errors['title'] ='please provide an title'."<br/>";
+        }
+        else 
+        {   $title = $_POST['title'];
+           
+        }
+    
+    //checking if ingredient field is empty 
+        if(empty($_POST['body']))
+        {
+            $errors['body'] = 'please provide an body'."<br/>";
+        }
+        else 
+        {
+            $body = $_POST['body'];
+            
+        }
+       
+        if(array_filter($errors))
+        {
+
+        }
+        else
+        {
+            $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category,Res_ID) VALUES($CQID,'$title', '$body', '$category',$ResponderID)"; //inserting data in to the database
+
+        }
+        $query_run = mysqli_query($ayacon, $sql); // running the query 
+
+        if($query_run) //if query is runnign successfully 
+        {
+            echo "Added Successfully";
+            header("Location: addcommonq.php");
+        }
+        {
+            echo "Not added Successfully". mysqli_error($ayacon);
+            
+        }
+    }
+    
+    
+    
+
+?>
