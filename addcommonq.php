@@ -1,6 +1,41 @@
 <?php
     require "DatabaseConnect.php";
-    $title = $category = $body = '';
+    //establish connection 
+    $ayacon=mysqli_connect("","","","");
+    $title = $category = $body = ''; //variables
+     //connecting to the database
+     $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body');
+
+    
+    
+    if (isset($_POST["Submit"])) 
+    {
+        $title = $_POST["title"];
+        $category= $_POST["category"];
+        $body = $_POST["body"];
+
+      
+        if(mysqli_query($ayacon, $sql))
+        {
+            // succesfully added to database 
+            // redirect to the first page 
+        }
+        else 
+        {
+            echo 'error with query' . mysqli_error($ayacon); // error display error
+        }
+    }
+    
+    
+    $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body');
+
+    
+    
+    
+
+    
+   
+
    
 
 ?>
@@ -21,7 +56,9 @@
             <p>Support Page > Staff</p>
         </div>
         <div class="rightAlign">
+            <a href = "index.php">
             <p class="button">Home</p>
+            </a>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
                 <button class="logout" onclick="logout()">Logout</button>
@@ -60,26 +97,35 @@
                             <lable>Title of Question</label>
                             <input type = "text" name = "title" value = "<?php echo $title ?>">
                             </div>
+                            <br>
+                            <div>
                             <label>Body of Question</label>
                             <input type = "text" name = "body" value = "<?php echo $body ?>">
+                            </div>
+                            <br>
                             <div>
                             <label>Category of Questions</label>
-                            </div>
-                            <div>
-                            <select name="cateogry" size="4" multiple>
+                            <select name="cateogry">
                                 <option value="semester">Semester</option>
                                 <option value="orientation">Orientation</option>
                                 <option value="scholarship">Scholarships</option>
                                 <option value="loan">Student Loan</option>
-                                </select>
+                             </select>
+                             <br>
                             </div>
+                            
+                           
+                            
                         </div>              
 
 
                     </div>
-
+                    <br>
+                    <!-- PLEASE DONT TOUCH AYABUTTON -->
                     <div class = "Ayabutton">
+                        
                         <button type="submit" name="Submit">Submit</button>
+                        
                     </div>
                 </form>
      </fieldset>

@@ -25,7 +25,9 @@ $_SESSION["SolID"] = "";
             <p class="button" onclick="showRegTickets()">Registered Tickets</p>
             <p class="button" onclick="showUnregTickets()">Unregistered Tickets</p>
             <p class="button" onclick="showCommonQ()">Common Questions</p>
+            <a href="addcommonq.php">
             <p class="button" onlclick="showAddCommonQ()">Add Common Questions</p>
+            </a>
             <div class="profileImage" tooltip="NOT LOGGED IN" id="profilePic">
                 <img src="assets/profileicon.png" alt="profile icon" />
                 <button class="logout" onclick="logout()">Logout</button>
