@@ -35,7 +35,7 @@
             
         }
        
-        $query_run = mysqli_query($ayacon, $sql); // running the query 
+       
 
       
         if(array_filter($errors))
@@ -47,7 +47,9 @@
             $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$body', '$category')"; //inserting data in to the database
 
         }
-        if(query_run) //if query is runnign successfully 
+        $query_run = mysqli_query($ayacon, $sql); // running the query 
+
+        if($query_run) //if query is runnign successfully 
         {
             echo "Added Successfully";
             header("Location: addcommonq.php");
@@ -120,7 +122,7 @@
                             <br>
                             <div>
                             <label>Category of Questions</label>
-                            <select name="cateogry">
+                            <select name="category">
                                 <option value="semester">Semester</option>
                                 <option value="orientation">Orientation</option>
                                 <option value="scholarship">Scholarships</option>
