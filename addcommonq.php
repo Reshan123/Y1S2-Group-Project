@@ -3,8 +3,7 @@
     //establish connection 
     $ayacon=mysqli_connect("localhost","root","","supportdesk");
     $title = $category = $body = ''; //variables
-     //connecting to the database
-     $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body')";
+     
 
     
     
@@ -14,15 +13,20 @@
         $category= $_POST["category"];
         $body = $_POST["body"];
 
+        
+
+        $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$body', '$category')"; //inserting data in to the database
+        $query_run = mysqli_query($ayacon, $sql); // running the query 
+
       
-        if(mysqli_query($ayacon, $sql))
+        if(query_run) //if query is runnign successfully 
         {
-            // succesfully added to database 
-            // redirect to the first page 
+            echo "Added Successfully";
+            header("Location: addcommonq.php");
         }
-        else 
         {
-            echo 'error with query' . mysqli_error($ayacon); // error display error
+            echo "Not added Successfully";
+            header("Location: addcommonq.php");
         }
     }
     
