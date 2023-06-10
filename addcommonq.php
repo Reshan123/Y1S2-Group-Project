@@ -1,10 +1,10 @@
 <?php
     require "DatabaseConnect.php";
     //establish connection 
-    $ayacon=mysqli_connect("","","","");
+    $ayacon=mysqli_connect("localhost","root","","supportdesk");
     $title = $category = $body = ''; //variables
      //connecting to the database
-     $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body');
+     $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body')";
 
     
     
@@ -27,16 +27,7 @@
     }
     
     
-    $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category) VALUES('$title', '$category', '$body');
-
     
-    
-    
-
-    
-   
-
-   
 
 ?>
 
