@@ -189,7 +189,8 @@ body .unreg_tickets .alltickets .ticket:hover{
 }
 
 body .unreg_tickets .alltickets .ticket:last-child{
-    grid-column: 1/3;
+    grid-row: 1/3;
+    align-self: stretch;
 }
 
 body .unreg_tickets .alltickets .ticket .title{

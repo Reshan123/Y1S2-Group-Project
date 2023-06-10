@@ -17,13 +17,17 @@ body nav img {
 }
 
 body nav .logo{
-    width: 150px;
+    width: 120px;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 body nav .supportTxt{
     font-size: 1.5em;
     align-self: center;
     justify-self: start;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 body nav .profileIcon{
@@ -75,9 +79,20 @@ body nav .profileIcon:hover + .logout{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    height: 40%;   
 }
 
 .button:active{
     box-shadow: 1px 1px;
+}
+
+#inActive{
+    border-radius: 10px;
+    align-self: flex-end;
+    box-shadow: 0px 0px;
+}
+
+#colorRed{
+    color: #f66950;
+    border-color: #f66950;
 }

@@ -13,11 +13,11 @@ require "DatabaseConnect.php";
 
 <body>
     <nav>
-        <img src="assets/cornell.png" alt="LOGO" class="logo"/>
+        <img src="assets/cornell.png" alt="LOGO" class="logo" />
         <p class="supportTxt">Support Page</p>
         <p class="button" onclick="goHome()">Home</p>
         <p class="button" onclick="showRaiseT()">Raise Ticket</p>
-        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
+        <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
         <button class="logout" onclick="logout()">Logout</button>
         <p id="logInStatus" class="logInStatus">
             <?php
@@ -31,6 +31,36 @@ require "DatabaseConnect.php";
             $resultUsersName = $conn->query("SELECT * FROM registered_user WHERE Reg_ID='$RegID'");
             while ($row = $resultUsersName->fetch_assoc()) {
                 echo $row["Reg_username"];
+            }
+
+            if (isset($_POST["Submit"])) {
+                $T_title = $_POST["T_title"];
+                $category = $_POST["category"];
+                $T_body = $_POST["T_body"];
+                $t_ID = 0;
+                $RegID = $_COOKIE["ID"];
+
+                $resultGetID = $conn->query("SELECT * FROM reg_tickets");
+                while ($rowGetID = $resultGetID->fetch_assoc()) {
+                    if ($t_ID < $rowGetID["RegT_ID"]) {
+                        $t_ID = $rowGetID["RegT_ID"];
+                    }
+                }
+                $t_ID++;
+
+                $resultInsertRegT = $conn->query("INSERT INTO reg_tickets (RegT_ID,RegT_category,RegT_title,RegT_body,Reg_ID) VALUE ($t_ID,'$category','$T_title','$T_body',$RegID)");
+
+                if ($resultInsertRegT) {
+                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
+                }
+            }
+
+            if (isset($_POST["deleteT"])) {
+                $TID = $_POST["deleteT"];
+                $resultDeleteRegT = $conn->query("DELETE FROM reg_tickets WHERE RegT_ID = $TID");
+                if ($resultDeleteRegT) {
+                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
+                }
             }
             ?>
         </p>
@@ -62,7 +92,8 @@ require "DatabaseConnect.php";
                 } else {
                     echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                     echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
-                    echo "<button class=button id=noReply>Not Replied Yet</button>";
+                    echo "<div class=buttons><button class=button id=inActive>Not Replied Yet</button>";
+                    echo "<form action=registered.php method=post><button class=button id=colorRed name=deleteT value=" . $rowTicket["RegT_ID"] . ">Delete Ticket</button></form></div>";
                     echo "</div>";
                 }
             }

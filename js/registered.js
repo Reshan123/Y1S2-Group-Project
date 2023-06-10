@@ -32,5 +32,6 @@ function showRaiseT() {
 function goHome() {
     regTForm.style.display = "none";
     askedQ.style.display = "block";
+    closeAllReply()
 }
 
