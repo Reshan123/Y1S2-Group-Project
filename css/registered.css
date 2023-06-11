@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body{
     background-image: radial-gradient( #e9fffd , #57c4ff);
     background-size: cover;
@@ -5,6 +9,7 @@ body{
 }
 
 body .askedQ{
+    display: none;
     margin-bottom: 50px;
 }
 
@@ -87,6 +92,7 @@ body .raiseT{
     height: 70vh;
     padding-bottom: 50px;
     position: relative;
+    margin-bottom: 50px;
 }
 
 
@@ -115,3 +121,209 @@ body .raiseT .raiseTForm fieldset button{
 body .raiseT .raiseTForm fieldset select{
     padding: 10px 20px;
 }
+
+
+
+body .header{
+    z-index: 1;
+    width: 100%;
+    height: 80vh;
+    background-image: radial-gradient( #72fef2 , #29b4ff);
+    background-size: cover;
+    border-radius: 15px;
+    clip-path: polygon(0 0 , 100% 0, 100% 90% ,0 100%);
+    color: #0b5037;
+    display: grid;
+    grid-template-columns: 1fr  1fr;
+    position: relative;
+
+    display: flex;
+    gap: 75px;    
+}
+
+body .header .element{
+    font-size: 11em;
+    font-family: 'Dancing Script', cursive;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin-top: 125px;
+    margin: auto;
+}
+
+body .header h1:first-child{
+    
+    animation: SwipeFromLeft .8s ease-in-out forwards;
+    
+}
+
+body .header h1:nth-child(2){
+    opacity: 0;
+    animation: appear .8s ease-in-out forwards .3s;
+}
+
+body .header h1:last-child{
+
+    animation: SwipeFromRight .8s ease-in-out forwards;
+}
+
+@keyframes SwipeFromLeft {
+    0%{
+        transform: translateX(-500%);
+    }
+
+    90%{
+        transform: translateX(10%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes SwipeFromRight {
+    0%{
+        transform: translateX(500%);
+    }
+
+    90%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+body .container{
+    width: 100%;
+    margin-block: 50px;
+}
+
+body .container .box {
+    width: 80%;
+    margin-inline: auto;
+    background-color: #e9fffd;
+    padding: 15px 10px;
+    border-radius: 15px;
+}
+
+body .container .box h2{
+    font-size: 1.8em;
+}
+
+body .container .box p{
+    font-size: larger;
+    line-height: 1.5;
+}
+
+
+
+
+body .container .services {
+    margin-top: 50px;
+    width: 80%;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 35px;
+}
+
+body .container .services h2{
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 2em;
+}
+
+body .container .services .card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 35px;
+    border-radius: 20px;
+    background-color: #00aaff;
+    color: #00fbff;
+}
+
+body .container .services .card .title{
+    font-size: 1.6em;
+    font-weight: 800;
+
+}
+
+body .container .services .card .body{
+    font-size: 1.1em;
+    line-height: 1.3;
+    
+}
+
+
+
+
+
+
+
+
+body .footer{
+    height: 15em;
+    background-color: #f6fefb;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+body .footer .container{
+    /* border: black solid 1px; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+body .footer .container .contact{
+    /* border: black solid 1px; */
+    grid-row: 2;
+}
+
+body .footer .container .help{
+    font-size: 2.5em;
+    font-family: 'Anton', sans-serif;
+    grid-column: 2;
+    justify-self: center;
+}
+
+body .footer .container .copyright{
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}
+
+body .footer .container .socails{
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+}
+
+body .footer .container .socails img{
+    margin-inline: 5px;
+    
+    height: 15px;
+    width: 15px;
+}
+
+
+

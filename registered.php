@@ -16,6 +16,7 @@ require "DatabaseConnect.php";
         <img src="assets/cornell.png" alt="LOGO" class="logo" />
         <p class="supportTxt">Support Page</p>
         <p class="button" onclick="goHome()">Home</p>
+        <p class="button" onclick="showTickets()">Your Tickets</p>
         <p class="button" onclick="showRaiseT()">Raise Ticket</p>
         <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
         <button class="logout" onclick="logout()">Logout</button>
@@ -66,6 +67,12 @@ require "DatabaseConnect.php";
         </p>
         </div>
     </nav>
+
+    <div class="header">
+        <h1 class="element">We</h1>
+        <h1 class="element">Are Here</h1>
+        <h1 class="element">To Help</h1>
+    </div>
 
     <div class="askedQ" id="askedQ">
         <h1>Raised Questions</h1>
@@ -123,6 +130,47 @@ require "DatabaseConnect.php";
             </fieldset>
         </form>
 
+    </div>
+
+    <div class="container" id="container">
+        <div class="box">
+            <h2>Welcome to Cornwell Helpdesk</h2>
+            <p>We are here to support you throughout your academic journey. Whether you're a new student seeking information about enrollment, a current student facing technical issues, we're dedicated to providing you with the help you need.Our team of knowledgeable professionals is well-equipped to address a wide range of questions and concerns. From troubleshooting software and hardware problems to guiding you through online learning platforms, we're here to ensure your experience at the university is as smooth as possible.</p>
+        </div>
+        <div class="services">
+            <h2>Services Provided</h2>
+            <div class="card card1">
+                <div class="title">Raise Tickets</div>
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi fugiat obcaecati eius nostrum cupiditate hic officiis sunt dignissimos itaque corrupti voluptates, cum explicabo? Ducimus quasi nihil odio obcaecati, explicabo ut?</div>
+            </div>
+            <div class="card card2">
+                <div class="title">Delete Tickets</div>
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi fugiat obcaecati eius nostrum cupiditate hic officiis sunt dignissimos itaque corrupti voluptates, cum explicabo? Ducimus quasi nihil odio obcaecati, explicabo ut?</div>
+            </div>
+            <div class="card card3">
+                <div class="title">View Replies</div>
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi fugiat obcaecati eius nostrum cupiditate hic officiis sunt dignissimos itaque corrupti voluptates, cum explicabo? Ducimus quasi nihil odio obcaecati, explicabo ut?</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <div class="container">
+        <p class="help">Do you need any help?</p>
+        <div class="contact">
+            <div><img src="assets/telephone.png" alt="" height="15px" width="15px"> &nbsp;+44 79 7351 4535 <br><img
+                src="assets/mail.png" alt="" height="15px" width="15px"> &nbsp; admin@cornell.com</div>
+        </div>
+        <div class="socails">
+            <img src="assets/facebook.png" alt="">
+            <img src="assets/twitter.png" alt="">
+            <img src="assets/instagram.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>coppyright &copy All rights resevered</p>
+        </div>
+        </div>
     </div>
 
     <script src="js/registered.js"></script>
