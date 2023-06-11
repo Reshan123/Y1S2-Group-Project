@@ -211,7 +211,8 @@ body .header h1:last-child{
 
 body .container{
     width: 100%;
-    margin-block: 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 body .container .box {
@@ -324,6 +325,3 @@ body .footer .container .socails img{
     height: 15px;
     width: 15px;
 }
-
-
-
