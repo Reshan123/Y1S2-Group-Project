@@ -1,10 +1,15 @@
 <?php
-require "DatabaseConnect.php";
+require "DatabaseConnect.php"; //database connection file
+
+//check if ID cookie is set
 if (isset($_COOKIE["ID"])) {
-    if ($_COOKIE["ID"] == "unreg") {
-        header('location:http://localhost/Y1S2-Group-Project/unregistered.php');
-    } else if (is_numeric($_COOKIE["ID"])) {
-        header('location:http://localhost/Y1S2-Group-Project/registered.php');
+
+    if ($_COOKIE["ID"] == "unreg") { // if cookie value is equl to unreg
+
+        header('location: unregistered.php');
+    } else if (is_numeric($_COOKIE["ID"])) { // if cookie value is numeric
+
+        header('location:registered.php');
     }
 }
 ?>
@@ -73,13 +78,13 @@ $email = "";
 $password = "";
 $type = "";
 
-// Check if the login form is submitted
-if (isset($_POST["Submit"]) && !isset($_POST["Type"])) {
 
+if (isset($_POST["Submit"]) && !isset($_POST["Type"])) { // if form is submitted and user type not selected
+    // alert a message
     echo "<script>alert('Enter a user type');</script>";
 
-} else if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
-
+} else if (isset($_POST["Submit"]) && isset($_POST["Type"])) {  // if form is submitted and user type is selected
+    // assign the form value to variables
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];

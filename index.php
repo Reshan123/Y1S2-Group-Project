@@ -19,12 +19,12 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
     <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" onclick="changePage()"/>
     <p class="logInStatus" id="logInStatus" onclick="changePage()">Not Logged In</p>
   </nav>
-
+  <!-- header section -->
   <div class="header">
     <img src="assets/Cornell (1).png" alt="LOGO">
     <h1 class="element1">Welcome</h1>
   </div>
-
+  <!-- common questions section -->
   <div class="common_q" id="commonQ">
     <?php
     $sqlCommonQ = "SELECT * FROM common_q";
@@ -42,7 +42,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
     }
     ?>
   </div>
-
+  <!-- footer section -->
   <div class="footer">
     <div class="container">
       <p class="help">Do you need any help?</p>

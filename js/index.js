@@ -1,9 +1,7 @@
 let commonQ =  document.getElementById("commonQ");
 
 function changePage () {
-    let currentURL = window.location.href;
-    currentURL += "login.php";
-    window.location = currentURL;
+    window.location = "http://localhost/Y1S2-Group-Project/login.php"
 }
 
 function goToHome() {

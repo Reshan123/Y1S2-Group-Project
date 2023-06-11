@@ -1,19 +1,26 @@
 <?php
 require "DatabaseConnect.php"; // Include the file that connects to the database
 
+// check if manager id cookie is set
 if (isset($_COOKIE["ManID"]) ){ 
+    // get all the manager details from manager table
     $resultAllManagers = $conn->query("SELECT * FROM manager");
 
     while($rowManager = $resultAllManagers->fetch_assoc()){
+        // check if manager id cookie is equal to an ID in the table
         if($_COOKIE["ManID"] == $rowManager["Man_ID"]){
+            // if yes send to manager page
             header("location:manager.php");
         }
     } 
-} else if (isset($_COOKIE["ResID"])){
+} else if (isset($_COOKIE["ResID"])){ // check if responder id cookie is set
+    // get all the responder details from responder table
     $resultAllResponders = $conn->query("SELECT * FROM responder");
 
     while ($rowResponder = $resultAllResponders->fetch_assoc()){
+        // check if responder id cookie is equal to an ID in the table
         if($_COOKIE["ResID"] == $rowResponder["Res_ID"]){
+            // if yes send to responder page
             header("location:responder.php");
         }
     }
@@ -82,7 +89,7 @@ $password = "";
 $type = "";
 
 // Check if the admin login form is submitted and user type is selected
-if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
+if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $type = $_POST["Type"];
@@ -98,7 +105,7 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
             header("location:http://localhost/Y1S2-Group-Project/manager.php");
             setcookie("ManID", $row["Man_ID"], time() + 3600, "/"); // Set a cookie with the manager ID
         }
-    } else if ($type == "Staff") {
+    } else if ($type == "Staff") { // if the user is staff
         // Query the database to check if the staff member exists
         $sql = "SELECT * FROM responder WHERE Res_email='$email' AND Res_password='$password';";
         $result = $conn->query($sql);
@@ -108,9 +115,9 @@ if (isset($_POST["Submit"]) and isset($_POST["Type"])) {
             header("location:http://localhost/Y1S2-Group-Project/responder.php");
             setcookie("ResID", $row["Res_ID"], time() + 3600, "/"); // Set a cookie with the staff member ID
         }
-    } else {
-        // If user type is not selected, display an error message
-        echo "<script> alert('Please enter a user type!!'); </script>";
-    }
+    } 
+}else {
+    // if form not filled properly
+    echo "<script> alert('Please fill all the inputs!!'); </script>";
 }
 ?>
