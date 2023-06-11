@@ -1,6 +1,23 @@
 <?php
 require "DatabaseConnect.php"; // Include the file that connects to the database
 
+if (isset($_COOKIE["ManID"]) ){ 
+    $resultAllManagers = $conn->query("SELECT * FROM manager");
+
+    while($rowManager = $resultAllManagers->fetch_assoc()){
+        if($_COOKIE["ManID"] == $rowManager["Man_ID"]){
+            header("location:manager.php");
+        }
+    } 
+} else if (isset($_COOKIE["ResID"])){
+    $resultAllResponders = $conn->query("SELECT * FROM responder");
+
+    while ($rowResponder = $resultAllResponders->fetch_assoc()){
+        if($_COOKIE["ResID"] == $rowResponder["Res_ID"]){
+            header("location:responder.php");
+        }
+    }
+}
 ?>
 
 <!-- HTML code for the login form and other elements -->
@@ -8,7 +25,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 <html>
 
 <head>
-    <title>Document</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
@@ -41,10 +58,10 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
                 <!-- Email and password input fields -->
                 <div class="mainForm">
                     <div>
-                        Email : <input type="text" name="email">
+                        Email : <input type="email" name="email" required>
                     </div>
                     <div>
-                        Password : <input type="text" name="password">
+                        Password : <input type="password" name="password" required>
                     </div>
                     <button type="submit" name="Submit">Submit</button>
                 </div>

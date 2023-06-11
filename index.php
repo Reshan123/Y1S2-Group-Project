@@ -7,7 +7,7 @@ require "DatabaseConnect.php"; // Include the file that connects to the database
 <head>
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <title>Document</title>
+  <title>Cornwell Support</title>
 </head>
 
 <body>

@@ -13,7 +13,7 @@ if (isset($_COOKIE["ID"])) {
 <html>
 
 <head>
-    <title>Document</title>
+    <title>Student Login</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
@@ -49,10 +49,10 @@ if (isset($_COOKIE["ID"])) {
                     <!-- Email and password input fields -->
                     <div class="mainForm">
                         <div>
-                            Email : <input type="text" name="email" id="emailInput">
+                            Email : <input type="email" name="email" id="emailInput" required>
                         </div>
                         <div>
-                            Password : <input type="text" name="password" id="PwdInput">
+                            Password : <input type="password" name="password" id="PwdInput" required>
                         </div>
                         <button type="submit" name="Submit">Submit</button>
                     </div>

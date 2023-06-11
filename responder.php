@@ -10,7 +10,7 @@ $_SESSION["SolID"] = "";
 <head>
     <link rel="stylesheet" href="css/responder.css" />
     <link rel="stylesheet" href="css/navbar.css" />
-    <title>Document</title>
+    <title>Responder</title>
 </head>
 
 <body>
@@ -22,9 +22,7 @@ $_SESSION["SolID"] = "";
         <p class="button" onclick="showRegTickets()">Registered Tickets</p>
         <p class="button" onclick="showUnregTickets()">Unregistered Tickets</p>
         <p class="button" onclick="showCommonQ()">Common Questions</p>
-        <a href="addcommonq.php">
-            <p class="button" onlclick="showAddCommonQ()">Add Common Questions</p>
-        </a>
+        <p class="button" onclick="showAddCommonQ()">Add Common Questions</p>
 
         <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
         <button class="logout" onclick="logout()">Logout</button>

@@ -5,7 +5,7 @@ session_start();
 <html>
 
 <head>
-    <title>Document</title>
+    <title>Responder</title>
     <link rel="stylesheet" href="css/reply.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>

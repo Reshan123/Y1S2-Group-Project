@@ -10,7 +10,7 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
     <link rel="stylesheet" href="css/unregistered.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <title>Document</title>
+    <title>Unregistered User</title>
 </head>
 
 <body>

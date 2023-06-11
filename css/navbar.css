@@ -70,6 +70,16 @@ body nav .profileIcon:hover + .logout{
     visibility: visible !important;
 }
 
+nav .button{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 35%;
+    justify-self: center;
+    align-self: center;
+    width: 65%;
+}
+
 .button{
     border: 2px solid #430f62;
     border-radius: 5px;
@@ -80,10 +90,6 @@ body nav .profileIcon:hover + .logout{
     color: #430f62;
     background-color: #39486700;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40%;   
 }
 
 .button:active{

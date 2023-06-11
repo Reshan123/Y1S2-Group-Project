@@ -8,7 +8,7 @@ require "DatabaseConnect.php";
 <head>
     <link rel="stylesheet" href="css/registered.css" />
     <link rel="stylesheet" href="css/navbar.css" />
-    <title>Document</title>
+    <title>Registered User</title>
 </head>
 
 <body>

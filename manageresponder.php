@@ -13,7 +13,7 @@ if (isset($_COOKIE["ManID"])) {
 <head>
     <link rel="stylesheet" href="css/manageresponder.css" />
     <link rel="stylesheet" href="css/navbar.css">
-    <title>Document</title>
+    <title>Manager</title>
 </head>
 
 <body>

@@ -3,7 +3,6 @@
     //establish connection 
     $ayacon=mysqli_connect("localhost","root","","supportdesk");
     $title = $category = $body = ''; //variables
-    $errors =  array('title'=>'', 'body'=>'');
 ?>
 
 
@@ -12,6 +11,7 @@
     <head>
     <link rel="stylesheet" href="css/addcommonq.css" />
     <link rel="stylesheet" href="css/navbar.css" />
+    <title>Responder</title>
     </head>
 <body>	
 
@@ -19,7 +19,7 @@
     <nav>
         <img src="assets/cornell.png" alt="LOGO" class="logo"/>
         <p class="supportTxt">Admin Panel</p>
-        <a href = "responder.php"><p class="button">Home</p></a>
+        <p class="button" onclick="home()">Home</p>
         <img src="assets/profileicon.png" alt="profile icon" class="profileIcon"/>
         <button class="logout" onclick="logout()">Logout</button>    
         <p id="logInStatus" class="logInStatus">
@@ -87,7 +87,12 @@
                     </div>
                 </form>
      </fieldset>
-
+     
+    <script>
+        function home() {
+            window.location = "http://localhost/Y1S2-Group-Project/responder.php";
+        }
+    </script>
 
 </body>
 </html>
@@ -95,58 +100,38 @@
 <?php
     if (isset($_POST["Submit"])) 
     {
-        $title = $_POST["title"];
-        $category= $_POST["category"];
-        $body = $_POST["body"];
         $CQID = 0;
 
         $sqlToGetID = "SELECT * FROM common_q";
-
-
-            
+        $resultGetID = $conn->query($sqlToGetID);
+        while($rowGetID = $resultGetID->fetch_assoc()){
+            if($CQID < $rowGetID["CQ_ID"]){
+                $CQID = $rowGetID["CQ_ID"];
+            }
+        }
+        $CQID++;
         if(empty($_POST['title']))
         {
-            $errors['title'] ='please provide an title'."<br/>";
+            echo "<script>alert('Please Enter Title');</script>";
         }
         else 
-        {   $title = $_POST['title'];
-           
-        }
-    
-    //checking if ingredient field is empty 
-        if(empty($_POST['body']))
-        {
-            $errors['body'] = 'please provide an body'."<br/>";
-        }
-        else 
-        {
-            $body = $_POST['body'];
-            
-        }
-       
-        if(array_filter($errors))
-        {
+        {   
+            $title = $_POST['title'];  
+            if(empty($_POST['body'])){
+                echo "<script>alert('Please Enter body text');</script>";
+            } else {
+                $body = $_POST['body'];
+                $category = $_POST["category"];
+                $sql = "INSERT INTO common_q(CQ_ID,CQ_title, CQ_body, CQ_Category,Res_ID) VALUES($CQID,'$title', '$body', '$category',$ResponderID)"; //inserting data in to the database
+                $query_run = mysqli_query($ayacon, $sql); // running the query 
 
-        }
-        else
-        {
-            $sql = "INSERT INTO common_q(CQ_title, CQ_body, CQ_Category,Res_ID) VALUES($CQID,'$title', '$body', '$category',$ResponderID)"; //inserting data in to the database
-
-        }
-        $query_run = mysqli_query($ayacon, $sql); // running the query 
-
-        if($query_run) //if query is runnign successfully 
-        {
-            echo "Added Successfully";
-            header("Location: addcommonq.php");
-        }
-        {
-            echo "Not added Successfully". mysqli_error($ayacon);
-            
-        }
+                if($query_run) //if query is runnign successfully 
+                {
+                    echo "Added Successfully";
+                    header("Location: responder.php");
+                }
+            }  
+        }      
+        
     }
-    
-    
-    
-
 ?>

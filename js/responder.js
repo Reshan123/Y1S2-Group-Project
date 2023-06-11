@@ -29,3 +29,7 @@ function showRegTickets() {
 function reply(ID) {
     document.cookie = "reply="+ID+";expire=20 Jun 2023;path=/";
 }
+
+function showAddCommonQ() {
+    window.location = "http://localhost/Y1S2-Group-Project/addcommonq.php"
+}
