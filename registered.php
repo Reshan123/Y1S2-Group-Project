@@ -1,5 +1,5 @@
 <?php
-require "DatabaseConnect.php";
+require "DatabaseConnect.php"; //database connection file
 ?>
 
 <!DOCTYPE html>
@@ -12,20 +12,22 @@ require "DatabaseConnect.php";
 </head>
 
 <body>
+    <!-- navgation bar -->
     <nav>
         <img src="assets/cornell.png" alt="LOGO" class="logo" />
         <p class="supportTxt">Support Page</p>
-        <p class="button" onclick="goHome()">Home</p>
-        <p class="button" onclick="showTickets()">Your Tickets</p>
-        <p class="button" onclick="showRaiseT()">Raise Ticket</p>
+        <a href="#"><p class="button" onclick="goHome()">Home</p></a>
+        <a href="#askedQ"><p class="button" onclick="showTickets()">Your Tickets</p></a>
+        <a href="#raiseTForm"><p class="button" onclick="showRaiseT()">Raise Ticket</p></a>
         <img src="assets/profileicon.png" alt="profile icon" class="profileIcon" />
         <button class="logout" onclick="logout()">Logout</button>
         <p id="logInStatus" class="logInStatus">
             <?php
-            // Get the User ID from the URL.
+            // Get the User ID from the cookie.
             if (isset($_COOKIE["ID"])) {
                 $RegID = $_COOKIE["ID"];
             } else {
+                // if cookie is not set
                 header("location:http://localhost/Y1S2-Group-Project/login.php");
             }
             // Retrieve the username of the User from the database.
@@ -33,47 +35,19 @@ require "DatabaseConnect.php";
             while ($row = $resultUsersName->fetch_assoc()) {
                 echo $row["Reg_username"];
             }
-
-            if (isset($_POST["Submit"])) {
-                $T_title = $_POST["T_title"];
-                $category = $_POST["category"];
-                $T_body = $_POST["T_body"];
-                $t_ID = 0;
-                $RegID = $_COOKIE["ID"];
-
-                $resultGetID = $conn->query("SELECT * FROM reg_tickets");
-                while ($rowGetID = $resultGetID->fetch_assoc()) {
-                    if ($t_ID < $rowGetID["RegT_ID"]) {
-                        $t_ID = $rowGetID["RegT_ID"];
-                    }
-                }
-                $t_ID++;
-
-                $resultInsertRegT = $conn->query("INSERT INTO reg_tickets (RegT_ID,RegT_category,RegT_title,RegT_body,Reg_ID) VALUE ($t_ID,'$category','$T_title','$T_body',$RegID)");
-
-                if ($resultInsertRegT) {
-                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
-                }
-            }
-
-            if (isset($_POST["deleteT"])) {
-                $TID = $_POST["deleteT"];
-                $resultDeleteRegT = $conn->query("DELETE FROM reg_tickets WHERE RegT_ID = $TID");
-                if ($resultDeleteRegT) {
-                    header("location:http://localhost/Y1S2-Group-Project/registered.php");
-                }
-            }
             ?>
         </p>
         </div>
     </nav>
 
+    <!-- header section -->
     <div class="header">
         <h1 class="element">We</h1>
         <h1 class="element">Are Here</h1>
         <h1 class="element">To Help</h1>
     </div>
 
+    <!-- allready asked questions area -->
     <div class="askedQ" id="askedQ">
         <h1>Raised Questions</h1>
         <?php
@@ -81,6 +55,7 @@ require "DatabaseConnect.php";
         // Retrieve tickets raised by the user
         $resultUserTickets = $conn->query("SELECT * FROM reg_tickets WHERE Reg_ID = " . $RegID);
         if ($resultUserTickets->num_rows > 0) {
+            //if tickets have been raised by the user
             while ($rowTicket = $resultUserTickets->fetch_assoc()) {
                 // Check if the ticket has a reply
                 $resultTicketReply = $conn->query("SELECT * FROM solution WHERE RegT_ID = " . $rowTicket["RegT_ID"]);
@@ -88,6 +63,7 @@ require "DatabaseConnect.php";
                     while ($rowReply = $resultTicketReply->fetch_assoc()) {
                         $resultResponder = $conn->query("SELECT * FROM responder WHERE Res_ID=" . $rowReply["Res_ID"]);
                         while ($rowResponder = $resultResponder->fetch_assoc()) {
+                            // ticket has reply
                             echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                             echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
                             echo "<button class=button onclick=showSolution(" . $rowReply["S_ID"] . ")>Show Reply</button>";
@@ -96,6 +72,7 @@ require "DatabaseConnect.php";
 
                     }
                 } else {
+                    //if ticket doesnt have reply
                     echo "<div class=ticket><div class = title>" . $rowTicket["RegT_title"] . "</div><br>";
                     echo "<div class = body>" . $rowTicket["RegT_body"] . "</div><br>";
                     echo "<div class=buttons><button class=button id=inActive>Not Replied Yet</button>";
@@ -104,6 +81,7 @@ require "DatabaseConnect.php";
                 }
             }
         } else {
+            //if no tickets have been raised
             echo "<div class=ticket><div class = title> No Tickets Raised</div><br>";
             echo "<div class = body>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad hic quisquam labore officiis odit iure harum dolorem dolore exercitationem? Porro, cum explicabo sed ipsum expedita aut veritatis modi quod perferendis?</div><br>";
             echo "</div>";
@@ -114,10 +92,20 @@ require "DatabaseConnect.php";
             echo "<div class = body>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad hic quisquam labore officiis odit iure harum dolorem dolore exercitationem? Porro, cum explicabo sed ipsum expedita aut veritatis modi quod perferendis?</div><br>";
             echo "</div>";
         }
+        //delete ticket
+        if (isset($_POST["deleteT"])) {
+            $TID = $_POST["deleteT"];
+            $resultDeleteRegT = $conn->query("DELETE FROM reg_tickets WHERE RegT_ID = $TID");
+            if ($resultDeleteRegT) {
+                // if deleted
+                header("location:http://localhost/Y1S2-Group-Project/registered.php");
+            }
+        }
+
         ?>
     </div>
     </div>
-
+    <!-- rasie ticket form -->
     <div class="raiseT" id="raiseTForm">
         <form action="registered.php" method="post" class="raiseTForm">
             <fieldset style="border-radius:15px;">
@@ -136,9 +124,38 @@ require "DatabaseConnect.php";
                 <button type="submit" name="Submit" class="submitButton">Raise Ticket</button>
             </fieldset>
         </form>
-
     </div>
 
+    <?php
+        //if submit for raise ticket is pressed
+        if (isset($_POST["Submit"])) {
+            //assign all values to variables
+            $T_title = $_POST["T_title"];
+            $category = $_POST["category"];
+            $T_body = $_POST["T_body"];
+            $t_ID = 0;
+            $RegID = $_COOKIE["ID"];
+
+            //get the higest value id number
+            $resultGetID = $conn->query("SELECT * FROM reg_tickets");
+            while ($rowGetID = $resultGetID->fetch_assoc()) {
+                if ($t_ID < $rowGetID["RegT_ID"]) {
+                    $t_ID = $rowGetID["RegT_ID"];
+                }
+            }
+            //add one to that number
+            $t_ID++;
+
+            //insert statemnent
+            $resultInsertRegT = $conn->query("INSERT INTO reg_tickets (RegT_ID,RegT_category,RegT_title,RegT_body,Reg_ID) VALUE ($t_ID,'$category','$T_title','$T_body',$RegID)");
+
+            if ($resultInsertRegT) {
+                //if inserted
+                header("location:http://localhost/Y1S2-Group-Project/registered.php");
+            }
+        }
+    ?>
+    <!-- body area of the page -->
     <div class="container" id="container">
         <div class="box">
             <h2>Welcome to Cornwell Helpdesk</h2>
@@ -161,7 +178,7 @@ require "DatabaseConnect.php";
         </div>
     </div>
 
-    
+    <!-- footer section -->
     <div class="footer">
         <div class="container">
         <p class="help">Do you need any help?</p>
@@ -180,7 +197,8 @@ require "DatabaseConnect.php";
         </div>
     </div>
 
-    <script src="js/registered.js"></script>
+    <!-- Javascript file for additional functions -->
+    <script src="js/registered.js"></script> 
 </body>
 
 </html>

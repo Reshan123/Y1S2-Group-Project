@@ -107,7 +107,7 @@ if (isset($_POST["Submit"]) && !isset($_POST["Type"])) { // if form is submitted
                 header('location:http://localhost/Y1S2-Group-Project/registered.php');
             }
 
-        } else {
+        } else { //if records not matching with database
             echo "<script>alert('Enter valid credentials');</script>";
         }
     }
