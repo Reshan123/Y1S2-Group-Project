@@ -76,7 +76,6 @@ require "DatabaseConnect.php";
 
     <div class="askedQ" id="askedQ">
         <h1>Raised Questions</h1>
-        <div class=hideReply><button class=button onclick=closeAllReply()>Hide Replies</button></div>
         <?php
         echo "<div class=AllTickets>";
         // Retrieve tickets raised by the user
@@ -105,7 +104,15 @@ require "DatabaseConnect.php";
                 }
             }
         } else {
-            echo "<h1>You Have Not Raised Any Tickets</h1>";
+            echo "<div class=ticket><div class = title> No Tickets Raised</div><br>";
+            echo "<div class = body>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad hic quisquam labore officiis odit iure harum dolorem dolore exercitationem? Porro, cum explicabo sed ipsum expedita aut veritatis modi quod perferendis?</div><br>";
+            echo "</div>";
+            echo "<div class=ticket><div class = title> No Tickets Raised</div><br>";
+            echo "<div class = body>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad hic quisquam labore officiis odit iure harum dolorem dolore exercitationem? Porro, cum explicabo sed ipsum expedita aut veritatis modi quod perferendis?</div><br>";
+            echo "</div>";
+            echo "<div class=ticket><div class = title> No Tickets Raised</div><br>";
+            echo "<div class = body>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad hic quisquam labore officiis odit iure harum dolorem dolore exercitationem? Porro, cum explicabo sed ipsum expedita aut veritatis modi quod perferendis?</div><br>";
+            echo "</div>";
         }
         ?>
     </div>

@@ -38,7 +38,7 @@ body .askedQ .AllTickets{
 body .askedQ .AllTickets .ticket{
     display: flex;
     flex-direction: column;
-    background-color: #DBDFEA;
+    background-color: #e9fffd;
     border-radius: 50px;   
     padding: 20px
 }
@@ -84,7 +84,7 @@ body .askedQ .AllTickets .ticket .buttons{
 
 body .raiseT{
     display: none;
-    background-color: #DBDFEA;
+    background-color: #e9fffd;
     border-radius: 50px;
     margin: auto;
     margin-top: 25px;
@@ -230,6 +230,8 @@ body .container .box h2{
 body .container .box p{
     font-size: larger;
     line-height: 1.5;
+    padding-inline: 50px;
+    text-align: justify;
 }
 
 
@@ -270,7 +272,7 @@ body .container .services .card .title{
 body .container .services .card .body{
     font-size: 1.1em;
     line-height: 1.3;
-    
+    text-align: justify;    
 }
 
 
