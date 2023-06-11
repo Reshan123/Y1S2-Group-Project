@@ -1,6 +1,6 @@
 <?php
-require "DatabaseConnect.php";
-session_start();
+require "DatabaseConnect.php"; //database connection file
+session_start(); // start session
 ?>
 <html>
 
@@ -13,7 +13,8 @@ session_start();
 </html>
 
 <body>
-<nav>
+    <!-- navigation bar -->
+    <nav>
         <img src="assets/cornell.png" alt="LOGO" class="logo" />
         <p class="supportTxt">Admin Panel</p>
         <p class="button" onclick="showRegTickets()">Home</p>
@@ -22,7 +23,7 @@ session_start();
 
         <p id="logInStatus" class="logInStatus">
             <?php
-            // Get the Responder ID from the URL.
+            // Get the Responder ID from the cookie.
             if (isset($_COOKIE["ResID"])) {
                 $ResponderID = $_COOKIE["ResID"];
             } else {
@@ -40,7 +41,7 @@ session_start();
         </div>
     </nav>
 
-
+    <!-- javascript for more functions -->
     <script>
         function showRegTickets() {
             window.location = "http://localhost/Y1S2-Group-Project/responder.php";
@@ -69,7 +70,7 @@ session_start();
                         </form>";
                 }
             }
-        } else if (!$_SESSION["SolID"] == "") {
+        } else if (!$_SESSION["SolID"] == "") { // if solution exist and need to update the reply
             $solID = $_SESSION["SolID"];
             $resultSolution = $conn->query("SELECT * FROM solution WHERE RegT_ID =" . $solID);
             $resultTicket = $conn->query("SELECT * FROM reg_tickets WHERE RegT_ID = " . $solID);
@@ -116,7 +117,7 @@ if (isset($_POST["solutionsubmit"])) {
         header("location:http://localhost/Y1S2-Group-Project/responder.php");
     }
 
-} else if (isset($_POST["solutionupdate"])){
+} else if (isset($_POST["solutionupdate"])){ // if solution update form is submitted
     $ResponderID = $_COOKIE["ResID"];
     $solID = $_SESSION["SolID"];
     $solutionupdatetext = $_POST["solutionupdatetext"];

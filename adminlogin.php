@@ -116,8 +116,5 @@ if (isset($_POST["Submit"]) && isset($_POST["Type"])) {
             setcookie("ResID", $row["Res_ID"], time() + 3600, "/"); // Set a cookie with the staff member ID
         }
     } 
-}else {
-    // if form not filled properly
-    echo "<script> alert('Please fill all the inputs!!'); </script>";
 }
 ?>

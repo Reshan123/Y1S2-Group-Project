@@ -14,6 +14,7 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
 </head>
 
 <body>
+    <!-- navigation bar -->
     <nav>
         <img src="assets/cornell.png" alt="LOGO" class="logo"/>
         <p class="supportTxt">Support Page</p>
@@ -23,7 +24,7 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
         <button class="logout" value="logout" onclick="logout()">Logout</button>
         <p id="logInStatus" class="logInStatus">Unregistered User</p>
     </nav>
-
+    <!-- raise ticket form -->
     <form action="unregistered.php" method="post" id="raiseTForm" class="raiseTForm">
         <fieldset style="border-radius:15px;">
             <legend>Raise Ticket</legend>
@@ -37,7 +38,7 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
         </fieldset>
     </form>
 
-
+    <!-- common questions section -->
     <div class="common_q">
         <?php
         $sqlCommonQ = "SELECT * FROM common_q";
@@ -55,7 +56,7 @@ require "DatabaseConnect.php"; // Include the file that establishes the database
         }
         ?>
     </div>
-
+    <!-- javascript file for more functions -->
     <script src="js/unreg.js"></script>
 </body>
 
@@ -82,6 +83,7 @@ if (isset($_POST["Submit"])) {
     $sqlInsertUnregT = "INSERT INTO unreg_tickets (UnregT_ID,UnregT_title, UnregT_body, UnregT_pemail) VALUES ($UnregTID,'$t_title','$t_body','$t_pemail')";
 
     if ($conn->query($sqlInsertUnregT) == TRUE) {
+        // if ticket raised
         echo "<script> alert('Your ticket has been raised. Please await a reply through $t_pemail.' ) </script>";
     }
 }

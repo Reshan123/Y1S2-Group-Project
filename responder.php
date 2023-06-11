@@ -1,8 +1,9 @@
 <?php
-require "DatabaseConnect.php";
-session_start();
-$_SESSION["RegID"] = "";
-$_SESSION["SolID"] = "";
+require "DatabaseConnect.php"; //database connection file
+session_start(); // starts session
+
+$_SESSION["SolID"] = ""; //creating and assigning new sessions
+$_SESSION["RegID"] = ""; //creating and assigning new sessions 
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,11 +72,11 @@ $_SESSION["SolID"] = "";
                 echo "<div class=" . "addedBy" . ">Added by :- " . $row["Reg_username"] . "</div> </div>";
             }
         }
-
-        if (isset($_POST["reply"])) {
-            if (isset($_POST["regid"])) {
+        
+        if (isset($_POST["reply"])) { // if reply button pressed
+            if (isset($_POST["regid"])) { // to add reply to a ticket
                 $_SESSION["RegID"] = $_POST["regid"];
-            } else if (isset($_POST["solutionid"])) {
+            } else if (isset($_POST["solutionid"])) { // to update the existing reply
                 $_SESSION["SolID"] = $_POST["solutionid"];
             }
             header("location:http://localhost/Y1S2-Group-Project/reply.php");
