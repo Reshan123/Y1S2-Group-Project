@@ -8,7 +8,17 @@ a{
     text-decoration: none;
 }
 
-body table {  
+.responders{
+    width: 10%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+/* body .manageResponders{
+    display: none;
+} */
+
+body .manageResponders table {  
     margin: auto;
     margin-top: 40px;
     background-color: #DBDFEA;
@@ -16,22 +26,22 @@ body table {
     padding: 60px 80px;
 }
 
-body table tr{
+body .manageResponders table tr{
     text-align: center;
     display: grid;
     grid-template-columns: 150px 300px 150px 150px 200px;    
     grid-template-rows: 10px 25px 25px;
 }
 
-body table tr td{
+body .manageResponders table tr td{
     font-size: 1.2em;
 }
 
-body table tr td:nth-child(2){
+body .manageResponders table tr td:nth-child(2){
     margin-right:100px;
 }
 
-body table tr:nth-child(1){
+body .manageResponders table tr:nth-child(1){
     font-weight: 900;
     font-size: 1.3em;
 }
@@ -50,4 +60,231 @@ body table tr:nth-child(1){
     border: tomato solid 2px;
     border-radius: 8px;
     margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+body .manageTickets .regT{
+    display: none;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 25px;    
+    margin-bottom: 25px;    
+    width: 80%;
+}
+
+body .manageTickets .regT h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
+}
+
+
+body .manageTickets .regT .alltickets{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    user-select: none;
+    -webkit-user-drag: none;
+    
+}
+
+
+body .manageTickets .regT .alltickets .ticket{
+    background-color: #B0DAFF;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+body .manageTickets .regT .alltickets .ticket:nth-child(1){
+    grid-column: 1/3;
+}
+
+body .manageTickets .regT .alltickets .ticket .title{
+    font-size: 2em;
+    font-weight: 400;
+}
+
+body .manageTickets .regT .alltickets .ticket .body{
+    text-align: justify;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .manageTickets .regT .alltickets .ticket .addedBy{
+    text-align: right;
+}
+
+body .manageTickets .regT .alltickets .ticket form {
+    /* background-color: rgb(3, 152, 152);     */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+body .manageTickets .regT .alltickets .ticket .button{
+    border-radius: 10px;
+    margin: 25px 0px;
+    box-shadow: 0px 0px;
+}
+
+body .manageTickets .regT .alltickets .ticket form .button{
+    border-radius: 10px;
+    box-shadow: 1px 2px;
+}
+
+body .manageTickets .regT .alltickets .ticket form input{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+body .manageTickets .unreg_tickets{
+    display: none;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+body .manageTickets .unreg_tickets h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
+}
+
+body .manageTickets .unreg_tickets .alltickets{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    user-select: none;
+    -webkit-user-drag: none;
+    justify-content: start;
+    align-items: center;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket{
+    background-color: #B0DAFF;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+
+body .manageTickets .unreg_tickets .alltickets .ticket:last-child{
+    grid-row: 1/3;
+    align-self: stretch;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket .title{
+    
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket .body{
+    text-align: justify;
+    width: 80%;
+    margin: 0px 75px;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket .addedBy{
+    text-align: right;
+    width: 90%;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket form {
+    /* background-color: rgb(3, 152, 152);     */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+body .manageTickets .unreg_tickets .alltickets .ticket form input{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+body .manageTickets .common_q{
+    display: none;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+body .manageTickets .common_q h1{
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: rgb(13, 127, 203);
+}
+body .manageTickets .common_q .alltickets{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 2fr;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+body .manageTickets .common_q .alltickets .ticket{
+    background-color: #B0DAFF;
+    border-radius: 15px;
+    padding: 15px 10px;
+}
+
+body .manageTickets .common_q .alltickets .ticket:nth-child(3){
+    grid-column: span 2;
+}
+
+body .manageTickets .common_q .alltickets .ticket:nth-child(4){
+    grid-row: 1/3;
+}
+body .manageTickets .common_q .alltickets .ticket .title{
+    font-size: 2em;
+    font-weight: 800;
+}
+
+body .manageTickets .common_q .alltickets .ticket .body{
+    text-align: justify;
+    font-size: 1.2em;
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+body .manageTickets .common_q .alltickets .ticket .addedBy{
+    text-align: right;
+}
+
+body .manageTickets .common_q .alltickets .ticket form {
+    /* background-color: rgb(3, 152, 152);     */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+body .manageTickets .common_q .alltickets .ticket form input{
+    display: none;
 }
